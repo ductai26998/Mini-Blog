@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-      <h1>This is register</h1>
+      <div class="register-container"></div>
   </div>
 </template>
 
