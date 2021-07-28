@@ -60,12 +60,29 @@ export default {};
   position: relative;
   z-index: 1;
   .register-container {
+
     margin: 5vh 20vw;
     display: flex;
     flex-direction: row;
-    background: #fff;
     border-radius: 20px;
     overflow: hidden;
+    @media screen and(max-width: 1280px){
+      margin: 10vh 15vw;
+    }
+    @media screen and(max-width: 898px){
+      justify-content: center;
+      .register-container__right{
+        display:none;
+      }
+      .register-container__left{
+        width: 70%;
+      }
+    }
+    @media screen and(max-width: 567px){
+      .register-container__left{
+        width: 70vw;
+      }
+    }
   }
 }
 .wrapper * {
@@ -112,6 +129,9 @@ export default {};
       margin-right: 3px;
     }
   }
+  .btn-login:hover{
+    opacity: 0.8;
+  }
   .btn-login:focus {
     box-shadow: none !important;
   }
@@ -125,9 +145,12 @@ export default {};
       font-weight: 600;
     }
     input {
-      border: 1px solid rgb(172, 169, 169);
+      border: 0;
       outline: none;
       padding: 5px;
+      border-radius: 5px;
+      background-color: rgb(228, 227, 227);
+      box-shadow: 1px;
       padding-left: 10px;
     }
     .policy {
@@ -135,11 +158,18 @@ export default {};
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      text-align: left;
+      text-align: left;  
+      .form-check-input{
+        margin-right: 10px;
+      }
+      .form-check-input:focus{
+        box-shadow: none!important;
+      }
       p {
         margin-left: 10px;
       }
     }
+
     .btn-submit{
       background: #fd6141;
       width: 100%;
@@ -157,6 +187,9 @@ export default {};
   .login-account{
     margin-top: 10px;
   }
+   .login-account:focus{
+     opacity: 0.8;
+   }
   .login-account a{
     margin-left: 5px;
   }
