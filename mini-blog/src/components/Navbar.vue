@@ -9,6 +9,7 @@
             <ul class="navbar-nav ml-auto">
                 <li><router-link class="nav-item active" to="/">Home</router-link></li>
                 <li><router-link class="nav-item" to="/about">About</router-link></li>
+                 <li><router-link class="nav-item" to="/contact">Contact</router-link></li>
                 <li><router-link class="nav-item" to="/blogs">Blogs</router-link></li>
                 <li><router-link class="nav-item" to="/auth/login">Login</router-link></li>
             </ul>
