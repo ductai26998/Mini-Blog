@@ -7,9 +7,9 @@
         <h5 class="welcome">Welcome to Moose</h5>
         <form action="">
           <label for="username">Username</label>
-          <input type="text" name="" id="" />
+          <input type="text" name="" id="" placeholder="Username" />
           <label for="password">Password</label>
-          <input type="text" name="" id="" />
+          <input type="text" name="" id="" placeholder="Password" />
           <span>Forgot password?</span>
           <div class="submit">
             <button type="submit">Sign in</button>
@@ -17,7 +17,10 @@
         </form>
         <h6 class="or">or</h6>
         <p class="new-user">
-          New Mooser? <span><a href="#">Create Account</a></span>
+          New Mooser?
+          <span
+            ><router-link to="/auth/register">Create Account</router-link></span
+          >
         </p>
       </div>
     </div>
@@ -49,7 +52,7 @@ $font-2: serif, cursive;
     flex-direction: row;
 
     @media screen and (max-width: 1280px) {
-          margin: 10vh 15vw;
+      margin: 10vh 15vw;
     }
 
     @media screen and (max-width: 898px) {
@@ -130,6 +133,7 @@ $font-2: serif, cursive;
       border-radius: 5px;
       background-color: rgb(228, 227, 227);
       box-shadow: 1px;
+      padding-left: 10px;
     }
 
     span {
@@ -152,12 +156,16 @@ $font-2: serif, cursive;
         border-radius: 20px;
         border: none;
       }
+      button:hover {
+        opacity: 0.8;
+      }
     }
   }
 
   .or {
     margin-bottom: 4vh;
     font-weight: 400;
+    cursor: pointer;
   }
 
   .new-user {
