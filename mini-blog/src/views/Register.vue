@@ -9,20 +9,40 @@
           <i class="fab fa-facebook-f"></i> Login with Facebook
         </button>
         <p class="text-center">Or</p>
-        <form action="">
+        <p class="error" v-show="error">Please fill full fields!!!</p>
+        <form @submit.prevent="submit">
           <label for="username">Full name</label>
-          <input type="text" name="" id="" placeholder="Duyen" />
+          <input
+            type="text"
+            v-model="fullName"
+            name=""
+            id=""
+            placeholder="Duyen"
+          />
           <label for="username">Email address</label>
           <input
             type="text"
+            v-model="email"
             name=""
             id=""
             placeholder="truongduyen@gmail.com"
           />
           <label for="username">Username</label>
-          <input type="text" name="" id="" placeholder="Duyen ku te" />
+          <input
+            type="text"
+            v-model="username"
+            name=""
+            id=""
+            placeholder="Duyen ku te"
+          />
           <label for="password">Password</label>
-          <input type="password" name="" id="" placeholder="sdsdsdsd" />
+          <input
+            type="password"
+            v-model="password"
+            name=""
+            id=""
+            placeholder="sdsdsdsd"
+          />
           <div class="policy">
             <input
               type="checkbox"
@@ -41,7 +61,8 @@
           </div>
         </form>
         <div class="login-account text-center">
-          Already have a account? <router-link to="/auth/login">Login</router-link>
+          Already have a account?
+          <router-link to="/auth/login">Login</router-link>
         </div>
       </div>
       <div class="register-container__right"></div>
@@ -50,7 +71,64 @@
 </template>
 
 <script>
-export default {};
+import firebase from "firebase";
+import "firebase/auth";
+import { app } from "../main";
+
+export default {
+  data() {
+    return {
+      fullName: "",
+      email: "",
+      username: "",
+      password: "",
+    };
+  },
+  computed: {
+    error() {
+      if (
+        this.fullName == "" ||
+        this.email == "" ||
+        this.username == "" ||
+        this.password == ""
+      ) {
+        return true;
+      }
+      return false;
+    },
+  },
+  methods: {
+    async submit() {
+      if (!this.error) {
+        try {
+          const data = {
+            fullName: this.fullName,
+            email: this.email,
+            username: this.username,
+            password: this.password,
+          };
+
+          const user = await firebase
+            .auth()
+            .createUserWithEmailAndPassword(this.email, this.password);
+          console.log(user);
+
+          let db = await firebase.firestore(app);
+          // Add a new document in collection "cities"
+          db.collection("users")
+            .add(data)
+            .then(() => {
+              console.log("Document successfully written!");
+            });
+
+          this.$router.push({ path: "login" });
+        } catch (err) {
+          alert(err);
+        }
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scopred>
@@ -60,26 +138,25 @@ export default {};
   position: relative;
   z-index: 1;
   .register-container {
-
     margin: 5vh 20vw;
     display: flex;
     flex-direction: row;
     border-radius: 20px;
     overflow: hidden;
-    @media screen and(max-width: 1280px){
+    @media screen and(max-width: 1280px) {
       margin: 10vh 15vw;
     }
-    @media screen and(max-width: 898px){
+    @media screen and(max-width: 898px) {
       justify-content: center;
-      .register-container__right{
-        display:none;
+      .register-container__right {
+        display: none;
       }
-      .register-container__left{
+      .register-container__left {
         width: 70%;
       }
     }
-    @media screen and(max-width: 567px){
-      .register-container__left{
+    @media screen and(max-width: 567px) {
+      .register-container__left {
         width: 70vw;
       }
     }
@@ -115,7 +192,7 @@ export default {};
   }
   p {
     font-size: 15px;
-    margin: 0px!important;
+    margin: 0px !important;
   }
   .btn-login {
     margin-bottom: 10px;
@@ -129,12 +206,19 @@ export default {};
       margin-right: 3px;
     }
   }
-  .btn-login:hover{
+  .btn-login:hover {
     opacity: 0.8;
   }
   .btn-login:focus {
     box-shadow: none !important;
   }
+
+  .error {
+    text-align: left;
+    color: red;
+    font-size: 12px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -158,39 +242,39 @@ export default {};
       display: flex;
       justify-content: flex-start;
       align-items: flex-start;
-      text-align: left;  
-      .form-check-input{
+      text-align: left;
+      .form-check-input {
         margin-right: 10px;
       }
-      .form-check-input:focus{
-        box-shadow: none!important;
+      .form-check-input:focus {
+        box-shadow: none !important;
       }
       p {
         margin-left: 10px;
       }
     }
 
-    .btn-submit{
+    .btn-submit {
       background: #fd6141;
       width: 100%;
-      border:none;
+      border: none;
       outline: none;
       border-radius: 0%;
     }
-    .btn-submit:hover{
-       opacity: 0.8;
+    .btn-submit:hover {
+      opacity: 0.8;
     }
-    .btn-submit:focus{
-      box-shadow: none!important;
+    .btn-submit:focus {
+      box-shadow: none !important;
     }
   }
-  .login-account{
+  .login-account {
     margin-top: 10px;
   }
-   .login-account:focus{
-     opacity: 0.8;
-   }
-  .login-account a{
+  .login-account:focus {
+    opacity: 0.8;
+  }
+  .login-account a {
     margin-left: 5px;
   }
 }
