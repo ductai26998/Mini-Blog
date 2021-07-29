@@ -4,7 +4,6 @@
       <div class="register-container__left">
         <h3 class="title">Moose</h3>
         <h5 class="welcome">Join our family</h5>
-        <p>Sed us massa vehicula esta justo sit amet,ascummsan nisi</p>
         <button type="button" class="btn btn-login btn-primary">
           <i class="fab fa-facebook-f"></i> Login with Facebook
         </button>
@@ -18,6 +17,7 @@
             name=""
             id=""
             placeholder="Duyen"
+            required
           />
           <label for="username">Email address</label>
           <input
@@ -26,6 +26,7 @@
             name=""
             id=""
             placeholder="truongduyen@gmail.com"
+            required
           />
           <label for="username">Username</label>
           <input
@@ -33,7 +34,8 @@
             v-model="username"
             name=""
             id=""
-            placeholder="Duyen ku te"
+            placeholder="Duyenkute"
+            required
           />
           <label for="password">Password</label>
           <input
@@ -41,13 +43,15 @@
             v-model="password"
             name=""
             id=""
-            placeholder="sdsdsdsd"
+            placeholder="****"
+            required
           />
           <div class="policy">
             <input
               type="checkbox"
               class="form-check-input"
               id="exampleCheck1"
+              required
             />
             <p>
               I don not wish to receive news and promotions from Moose. Company
@@ -132,6 +136,8 @@ export default {
 </script>
 
 <style lang="scss" scopred>
+$font-1: "Pacifico", cursive;
+$font-2: serif, cursive;
 .wrapper {
   background-image: url("https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/31507603_1500327223411862_4638707908249387008_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=19026a&_nc_ohc=JXL0kLfRd50AX8wEAgN&_nc_ht=scontent.fsgn2-4.fna&oh=8948367be9e7214adb401be68d809feb&oe=61254A01");
   background-size: cover;
@@ -183,12 +189,17 @@ export default {
   padding: 10px 30px;
   .title {
     font-weight: 600;
+    font-family: "Pacifico", cursive;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
   }
   .welcome {
     font-weight: 400;
     line-height: 24px;
-    color: black;
-    margin-top: 10px;
+    color: rgba(0,0,0,0.8);
+    margin-top: 3vh;
+    font-size: 18px;
+    margin-bottom: 3vh;
   }
   p {
     font-size: 15px;
@@ -222,11 +233,9 @@ export default {
   form {
     display: flex;
     flex-direction: column;
-    label {
+     label {
       text-align: left;
-      margin-top: 10px;
-      color: black;
-      font-weight: 600;
+      margin-top: 8px;
     }
     input {
       border: 0;
@@ -280,8 +289,8 @@ export default {
 }
 .register-container__right {
   width: 50%;
-  height: 80vh;
+  height: 90vh;
   background-image: url("https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/31318000_1497099090401342_867618865926897664_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=19026a&_nc_ohc=vM4LEEyCH3IAX987BjR&_nc_oc=AQlUdMr93DWyEjRYd_K9EdHSqfFLEbej4HCl-6sKLkvJY_AvrJ4ACcjxfVisHaF9aMs&_nc_ht=scontent.fsgn2-6.fna&oh=83d4867bc7c155d4abf608fc33a23bb2&oe=6124AC31");
-  background-size: 100%;
+  background-size: cover;
 }
 </style>
