@@ -47,8 +47,8 @@ const routes = [
   },
   {
     path: "/dashboard",
-    component: ()=>import("../views/Dashboard.vue"),
-    meta: {layout:"secret"}
+    component: () => import("../views/Dashboard.vue"),
+    meta: { layout: "secret" },
   },
   {
     path: "*",

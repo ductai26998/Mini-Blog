@@ -1,26 +1,22 @@
 <template>
     <div class="default-inner">
-        <NavbarSecret/>
+        <Sliderbar/>
         <slot/>
-        <Subcribe/>
-        <Footer/>
     </div>
 </template>
 
 <script>
-import Footer from "../components/Footer.vue"
-import Subcribe from "../components/Subcribe.vue"
-import NavbarSecret from "../components/NavbarSecret.vue"
 
+import Sliderbar from "../components/Sliderbar.vue"
 export default {
     components:{
-        Subcribe,
-        Footer,
-        NavbarSecret,
+        Sliderbar        
     },
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.default-inner{
+    display: flex;
+}
 </style>

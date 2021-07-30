@@ -30,7 +30,6 @@
 <script>
 import firebase from "firebase";
 import "firebase/auth";
-
 import { mapState } from "vuex";
 import { mapMutations } from "vuex";
 
@@ -62,14 +61,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$font-1: "Pacifico", cursive;
-$font-2: serif, cursive;
+
+@import "../assets/scss/style.scss";
 
 @mixin font-style-1 {
   font-size: 15px;
   font-weight: 400;
   color: rgb(75, 75, 75);
 }
+
+// @mixin font-style($fs, $fw, $color) {
+//   font-size: $fs;
+//   font-weight: $fw;
+//   color: $color;
+// }
 
 .wrapper {
   background-image: url(../assets/images/login-cover.jpg);
