@@ -12,6 +12,7 @@
                  <li><router-link class="nav-item" to="/contact">Contact</router-link></li>
                 <li><router-link class="nav-item" to="/blogs">Blogs</router-link></li>
                 <li><router-link class="nav-item" to="/auth/login">Login</router-link></li>
+                <li><router-link class="nav-item" to="/auth/register">Register</router-link></li>
             </ul>
             </div>
         </div>
