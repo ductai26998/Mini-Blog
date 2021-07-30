@@ -5,11 +5,11 @@
       <div class="login-container__right">
         <h3 class="title">Moose</h3>
         <h5 class="welcome">Welcome to Moose</h5>
-        <form action="">
-          <label for="username">Username</label>
-          <input type="text" name="" id="" placeholder="Username" />
+        <form @submit.prevent="submit">
+          <label for="username">Email</label>
+          <input type="text" v-model="email" placeholder="Email" />
           <label for="password">Password</label>
-          <input type="text" name="" id="" placeholder="Password" />
+          <input type="password" v-model="password" placeholder="Password" />
           <span>Forgot password?</span>
           <div class="submit">
             <button type="submit">Sign in</button>
@@ -28,7 +28,37 @@
 </template>
 
 <script>
-export default {};
+import firebase from "firebase";
+import "firebase/auth";
+
+import { mapState } from "vuex";
+import { mapMutations } from "vuex";
+
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+    };
+  },
+  computed: mapState({ loggedIn: (state) => state.loggedIn }),
+  methods: {
+    ...mapMutations(["changeState"]),
+    async submit() {
+      try {
+        console.log("before: " + this.loggedIn);
+        await firebase
+          .auth()
+          .signInWithEmailAndPassword(this.email, this.password);
+        this.changeState();
+        console.log("after: " + this.loggedIn);
+        this.$router.push({ path: "/" });
+      } catch (err) {
+        alert(err);
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -69,6 +99,7 @@ $font-2: serif, cursive;
       margin: 0;
       .login-container__right {
         width: 100% !important;
+        height: 100vh !important;
       }
     }
   }
