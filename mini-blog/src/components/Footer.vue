@@ -1,6 +1,6 @@
 <template>
     <footer class="ftco-footer">
-        <div class="container">
+        <div class="container m-auto">
             <div class="row mb-5 gy-4 justify-content-between">
                 <div class="col-sm-12 col-md-4">
                     <div class="ftco-footer-widget mb-4">
@@ -72,6 +72,9 @@ export default {
 *{
     padding: 0px;
     margin: 0px;
+}
+.m-auto{
+    margin:auto!important;
 }
 .ftco-footer{
     font-size: 16px;
