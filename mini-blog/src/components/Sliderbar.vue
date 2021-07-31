@@ -53,6 +53,9 @@ export default {
   color: #fff;
   height: 100vh;
   justify-content: flex-start;
+  position: fixed;
+  top: 0;
+  left: 0;
   .title {
     margin-top: 6vh;
     margin-bottom: 6vh;
@@ -66,7 +69,7 @@ export default {
     list-style: none;
     padding-top: 1em;
     .item-control {
-      padding: 6px 0px;
+      padding: 8px 0px;
       margin-bottom: 10px;
       background: #ef193c;
       width: 2.5rem;
@@ -81,13 +84,13 @@ export default {
   }
   .setting {
     margin: 0 auto;
-    margin-top: 55vh;
-    padding: 6px 0px;
-    background: #ef193c;
+    margin-top: 52vh;
+    padding: 8px 0px;
+    background: #354255;
     width: 2.5rem;
     border-radius: 50%;
-    a{
-      color: #fff!important;
+    a {
+      color: rgba(225, 235, 245, 0.87) !important;
     }
   }
 }
