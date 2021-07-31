@@ -54,7 +54,6 @@ export default {
   height: 100vh;
   justify-content: flex-start;
   position: fixed;
-  opacity: 0.5;
   top: 0;
   left: 0;
   .title {

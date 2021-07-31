@@ -61,7 +61,7 @@
                   <div
                     class="edit"
                     style="width: 3%"
-                    @click="item.editting=!item.editting"
+                    @click="item.editting = !item.editting"
                   >
                     <i class="fas fa-list"></i>
                     <ul
