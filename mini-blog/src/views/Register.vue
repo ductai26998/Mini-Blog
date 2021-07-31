@@ -8,7 +8,7 @@
           <i class="fab fa-facebook-f"></i> Login with Facebook
         </button>
         <p class="text-center">Or</p>
-        <p class="error" v-show="error">Please fill full fields!!!</p>
+        <!-- <p class="error" v-show="error">Please fill full fields!!!</p> -->
         <form @submit.prevent="submit">
           <label for="username">Full name</label>
           <input
