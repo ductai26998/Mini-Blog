@@ -13,7 +13,7 @@
           </li>
           <li class="item-control">
             <router-link to="/">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-newspaper"></i>
             </router-link>
           </li>
           <li class="item-control">

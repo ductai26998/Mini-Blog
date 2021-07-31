@@ -8,11 +8,7 @@
             >Home <i class="fa fa-chevron-right"></i
           ></router-link>
         </span>
-        <span>
-          <router-link to="/blogs"
-            >Blog <i class="fa fa-chevron-right"></i
-          ></router-link>
-        </span>
+        <span> Blog <i class="fa fa-chevron-right"></i> </span>
       </p>
     </div>
     <div class="blogs__main">
