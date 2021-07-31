@@ -1,22 +1,21 @@
 <template>
-    <div class="default-inner">
-        <Sliderbar/>
-        <slot/>
-    </div>
+  <div class="secret-inner">
+    <Sliderbar />
+    <slot />
+  </div>
 </template>
 
 <script>
-
-import Sliderbar from "../components/Sliderbar.vue"
+import Sliderbar from "../components/Sliderbar.vue";
 export default {
-    components:{
-        Sliderbar        
-    },
-}
+  components: {
+    Sliderbar,
+  },
+};
 </script>
 
 <style lang="scss" scoped>
-.default-inner{
-    display: flex;
+.secret-inner {
+  display: flex;
 }
 </style>

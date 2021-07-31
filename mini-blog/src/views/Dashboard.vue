@@ -1,15 +1,21 @@
 <template>
   <div class="dashboard">
-      <h1>This is dashboard</h1>
+    <NavAdmin />
+    <h1>This is dashboard</h1>
   </div>
 </template>
 
 <script>
+import NavAdmin from "../components/NavAdmin.vue";
 export default {
-
-}
+  components: {
+    NavAdmin,
+  },
+};
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+.dashboard {
+  width: 100%;
+}
 </style>

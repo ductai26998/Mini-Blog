@@ -25,9 +25,7 @@ export default {
   computed: {
     ...mapState(["loggedIn"]),
   },
-
 };
 </script>
 
-<style>
-</style>
+<style></style>

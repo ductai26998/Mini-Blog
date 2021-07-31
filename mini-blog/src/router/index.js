@@ -29,21 +29,21 @@ const routes = [
   {
     path: "/blogs",
     name: "Blogs",
-    component: () => import("../views/Blogs.vue")
+    component: () => import("../views/Blogs.vue"),
   },
   {
     path: "/blogs/:id",
-    component: () => import("../views/BlogDetail.vue")
+    component: () => import("../views/BlogDetail.vue"),
   },
   {
     path: "/auth/login",
-    component: ()=>import("../views/Login.vue"),
-    meta: {layout:"unauth"}
+    component: () => import("../views/Login.vue"),
+    meta: { layout: "unauth" },
   },
   {
-    path:"/auth/register",
-    component: ()=>import("../views/Register.vue"),
-    meta: {layout:"unauth"}
+    path: "/auth/register",
+    component: () => import("../views/Register.vue"),
+    meta: { layout: "unauth" },
   },
   {
     path: "/dashboard",
@@ -52,7 +52,7 @@ const routes = [
   },
   {
     path: "*",
-    component: ()=>import("../views/NotFound.vue")
+    component: () => import("../views/NotFound.vue"),
   },
 ];
 
