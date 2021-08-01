@@ -8,11 +8,7 @@
       </button>
     </div>
     <transition name="fade" appear>
-      <div
-        class="modal-overlay"
-        v-if="showModal"
-        @click="showModal = false"
-      ></div>
+      <div class="modal-overlay" v-if="showModal"></div>
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
@@ -106,9 +102,9 @@ body {
   padding: 25px;
 
   .btn-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
 }
 

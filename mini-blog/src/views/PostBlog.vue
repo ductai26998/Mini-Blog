@@ -10,17 +10,44 @@
         <input class="input-title" type="text" placeholder="Your blog title" />
       </div>
       <div class="post-option">
-        <button class="post-option__content"></button>
-        <button class="post-option__image"></button>
+        <div
+          class="post-option__content"
+          @click="inTextInput = true"
+        ></div>
+        <div
+          class="post-option__image"
+          @click="inTextInput = false"
+        ></div>
       </div>
       <div class="post-box">
-        <textarea
-          name=""
-          id=""
-          class="post-box__text"
-          cols="30"
-          rows="13"
-        ></textarea>
+        <div class="post-box__text" v-show="inTextInput">
+          <textarea
+            name=""
+            id=""
+            class="post-box__text--input"
+            cols="30"
+            rows="13"
+          ></textarea>
+        </div>
+
+        <div class="post-box__image" v-show="!inTextInput">
+          <label for="file-input">Choose image</label>
+          <input
+            class="post-box__image--choose"
+            id="file-input"
+            ref="imgInput"
+            accept="image/*"
+            type="file"
+            @change="previewImage"
+          />
+          <img
+            id="preview"
+            ref="previewBox"
+            src="#"
+            alt="Your image"
+            onerror="this.style.display='none'"
+          />
+        </div>
         <div class="post-box__send">
           <button type="submit" class="btn-send"></button>
         </div>
@@ -30,7 +57,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      inTextInput: true,
+    };
+  },
+  methods: {
+    previewImage() {
+      const [file] = this.$refs.imgInput.files;
+      if (file) {
+        this.$refs.previewBox.src = URL.createObjectURL(file);
+        this.$refs.previewBox.style.display = "block";
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -104,7 +146,7 @@ export default {};
   }
 }
 .post-option__content {
-  border: none;
+  cursor: pointer;
   padding: 5px;
   height: 35px;
   width: 35px;
@@ -112,7 +154,7 @@ export default {};
   background-image: url(../assets/icon/pencil.svg);
 }
 .post-option__image {
-  border: none;
+  cursor: pointer;
   padding: 5px;
   height: 35px;
   width: 35px;
@@ -126,27 +168,73 @@ export default {};
   position: relative;
   margin-top: 20px;
 }
-.post-box::before {
+
+.post-box__text {
+  border-radius: 8px;
+  padding-top: 10px;
+  background-color: rgb(224, 224, 224);
+}
+.post-box__text--input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  padding-top: 0;
+  color: rgb(71, 71, 71);
+  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+.post-box__text::before {
   content: "";
+  display: block;
   position: absolute;
   top: -15px;
   left: 20px;
 
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-
-  border-bottom: 15px solid rgb(224, 224, 224);
+  @include triangle(15px, rgb(224, 224, 224));
 }
-.post-box__text {
-  background-color: rgb(224, 224, 224);
-  border: none;
-  outline: none;
-  padding: 10px;
-  color: rgb(71, 71, 71);
+.post-box__image {
+  display: flex;
+  height: 339px;
   border-radius: 8px;
+  padding: 10px;
+  background-color: rgb(224, 224, 224);
+  display: flex;
+  flex-direction: column;
+
+  label {
+    cursor: pointer;
+    font-family: $font-1;
+    padding: 5px;
+    width: 100px;
+    text-align: center;
+    border-radius: 8px;
+    background-color: #fff2cc;
+  }
+  label:hover {
+    background-color: #f3de9f;
+  }
+  #preview {
+    text-align: center;
+    max-height: 250px;
+    margin-top: 20px;
+    object-fit: contain;
+  }
 }
+.post-box__image::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -15px;
+  left: 70px;
+
+  @include triangle(15px, rgb(224, 224, 224));
+}
+.post-box__image--choose {
+  display: none;
+}
+
 .post-box__send {
   display: flex;
   justify-content: flex-end;
