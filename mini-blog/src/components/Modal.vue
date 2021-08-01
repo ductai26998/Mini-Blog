@@ -1,6 +1,12 @@
 <template>
-  <div id="post-modal">
-    <button class="button" @click="showModal = true">Show Modal</button>
+  <div>
+    <div id="post-modal">
+      <button class="button" @click="showModal = true">
+        <div class="icon-add">
+          <i class="fas fa-plus"></i>
+        </div>
+      </button>
+    </div>
     <transition name="fade" appear>
       <div
         class="modal-overlay"
@@ -10,20 +16,17 @@
     </transition>
     <transition name="slide" appear>
       <div class="modal" v-if="showModal">
-        <h1>Lorem Ipsum</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          provident explicabo accusamus laudantium voluptatum nobis sed nesciunt
-          neque possimus molestiae?
-        </p>
-        <button class="button" @click="showModal = false">Close Modal</button>
+        <button class="btn-close" @click="showModal = false"></button>
+        <post-blog></post-blog>
       </div>
     </transition>
   </div>
 </template>
 
 <script>
+import PostBlog from "../views/PostBlog.vue";
 export default {
+  components: { PostBlog },
   data() {
     return {
       showModal: false,
@@ -49,38 +52,35 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  width: 100vw;
-  min-height: 100vh;
   overflow-x: hidden;
 }
 
 .button {
   appearance: none;
-  outline: none;
   border: none;
-  background: none;
   cursor: pointer;
+  margin: 5px;
 
   display: inline-block;
-  padding: 15px 25px;
-  background-image: linear-gradient(to right, #cc2e5d, #ff5858);
-  border-radius: 8px;
-
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-
-  box-shadow: 3px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.4);
   transition: 0.4s ease-out;
 
+  .icon-add {
+    padding: 10px 15px;
+    border-radius: 50%;
+    background: #02c591;
+    color: #fff;
+    cursor: pointer;
+  }
+
   &:hover {
-    box-shadow: 6px 6px rgba(0, 0, 0, 0.6);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }
 
 .modal-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -91,30 +91,24 @@ body {
 
 .modal {
   position: fixed;
+  display: block;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99;
+  height: 90%;
 
   width: 100%;
-  max-width: 400px;
+  max-width: 700px;
   background-color: #fff;
   border-radius: 16px;
 
   padding: 25px;
 
-  h1 {
-    color: #222;
-    font-size: 32px;
-    font-weight: 900;
-    margin-bottom: 15px;
-  }
-
-  p {
-    color: #666;
-    font-size: 18px;
-    font-weight: 400;
-    margin-bottom: 15px;
+  .btn-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
   }
 }
 

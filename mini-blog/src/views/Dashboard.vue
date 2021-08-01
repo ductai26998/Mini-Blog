@@ -5,22 +5,8 @@
       <div class="row">
         <div class="col-12 col-sm-12 col-md-12">
           <div class="row add-area text-start">
-            <div class="col-10">
-              <div class="text">
-                <h2>Add New Package</h2>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Officia iste accusantium error qui? Reiciendis accusamus
-                  dignissimos amet delectus, eaque sed reprehenderit id
-                  blanditiis, ad non eligendi modi tempora ullam! Repellat.
-                </p>
-              </div>
-            </div>
-            <div class="col-2 d-flex justify-content-end align-items-center">
-              <div class="icon-add">
-                <i class="fas fa-plus"></i>
-              </div>
-            </div>
+            <h2>Add New Blog</h2>
+            <modal></modal>
           </div>
         </div>
         <div class="col-12 col-sm-12 col-md-12 p-0">
@@ -97,6 +83,7 @@
 </template>
 
 <script>
+import Modal from '../components/Modal.vue';
 import NavAdmin from "../components/NavAdmin.vue";
 export default {
   data() {
@@ -198,6 +185,7 @@ export default {
   },
   components: {
     NavAdmin,
+    Modal,
   },
 };
 </script>
@@ -207,17 +195,22 @@ export default {
   background: #f0f6fb;
   margin-left: 5rem;
   .add-area {
+    display: flex;
+    flex-direction: row !important;
     background: #fff;
     border-radius: 25px;
     padding: 10px 20px;
-    .icon-add {
-      padding: 10px 15px;
-      border-radius: 50%;
-      background: #02c591;
-      color: #fff;
-      box-shadow: 2px 2px 2px rgb(161, 161, 161);
-      cursor: pointer;
+    h2 {
+      display: inline-flex;
     }
+    // .icon-add {
+    //   padding: 10px 15px;
+    //   border-radius: 50%;
+    //   background: #02c591;
+    //   color: #fff;
+    //   box-shadow: 2px 2px 2px rgb(161, 161, 161);
+    //   cursor: pointer;
+    // }
   }
   .control {
     border-radius: 25px;
