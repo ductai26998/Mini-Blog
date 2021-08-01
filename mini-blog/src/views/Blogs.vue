@@ -10,9 +10,6 @@
         </span>
         <span> Blog <i class="fa fa-chevron-right"></i> </span>
       </p>
-
-      <Modal></Modal>
-
     </div>
     <div class="blogs__main">
       <div class="blog-item col-md-6 col-lg-4">
@@ -357,16 +354,10 @@
 </template>
 
 <script>
-import Modal from '../components/Modal.vue';
 export default {
-  components: {
-    Modal,
-  },
   data() {
-    return {
-      // showModal: false,
-    }
-  }
+    return {};
+  },
 };
 </script>
 
