@@ -4,20 +4,19 @@
       <div class="page-logo"><span class="logo-text">moose</span></div>
       <h3 class="post-title">Post to blogs</h3>
     </div>
-    <form class="post-container__form">
+    <form @submit.prevent="postBlog" class="post-container__form">
       <div class="blog-title">
         <label for="">Title: </label>
-        <input class="input-title" type="text" placeholder="Your blog title" />
+        <input
+          class="input-title"
+          type="text"
+          placeholder="Your blog title"
+          v-model="title"
+        />
       </div>
       <div class="post-option">
-        <div
-          class="post-option__content"
-          @click="inTextInput = true"
-        ></div>
-        <div
-          class="post-option__image"
-          @click="inTextInput = false"
-        ></div>
+        <div class="post-option__content" @click="inTextInput = true"></div>
+        <div class="post-option__image" @click="inTextInput = false"></div>
       </div>
       <div class="post-box">
         <div class="post-box__text" v-show="inTextInput">
@@ -26,7 +25,8 @@
             id=""
             class="post-box__text--input"
             cols="30"
-            rows="13"
+            rows="12"
+            v-model="content"
           ></textarea>
         </div>
 
@@ -57,10 +57,17 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/storage";
+import { app } from "../main";
+
 export default {
   data() {
     return {
       inTextInput: true,
+      title: "",
+      content: "",
+      image: "",
     };
   },
   methods: {
@@ -69,6 +76,47 @@ export default {
       if (file) {
         this.$refs.previewBox.src = URL.createObjectURL(file);
         this.$refs.previewBox.style.display = "block";
+      }
+
+      this.image = file;
+    },
+    async postBlog() {
+      try {
+        const id = Math.random().toString(36).substr(2, 9);
+        const date = new Date();
+
+        const data = {
+          title: this.title,
+          content: this.content,
+          image_id: id,
+          comment_id: [],
+          release_date: date,
+        };
+
+        // Upload info of new blog to Firestore Database
+        let db = await firebase.firestore(app);
+        // Add a new document in collection "cities"
+        await db
+          .collection("blogs")
+          .doc(id)
+          .set(data)
+          .then(() => {
+            console.log("Document successfully written!");
+          });
+
+        // Upload image to Storage Firebase
+        var storageRef = firebase.storage().ref();
+        // Create a reference to 'images/blogs/*.jpg'
+        var imgRef = storageRef.child("images/blogs/" + id + ".png");
+        // [START storage_upload_blob]
+        // 'file' comes from the Blob or File API
+        await imgRef.put(this.image).then(() => {
+          console.log("Uploaded a blob or file!");
+        });
+
+        alert("The blog was posted.");
+      } catch (err) {
+        alert(err);
       }
     },
   },
@@ -124,6 +172,7 @@ export default {
       border: none;
       outline: none;
       padding: 5px;
+      width: 100%;
       color: rgb(107, 107, 107);
       border-bottom: solid 1px #fff;
       border-radius: 8px;
@@ -196,7 +245,7 @@ export default {
 }
 .post-box__image {
   display: flex;
-  height: 339px;
+  height: 315px;
   border-radius: 8px;
   padding: 10px;
   background-color: rgb(224, 224, 224);
@@ -217,7 +266,7 @@ export default {
   }
   #preview {
     text-align: center;
-    max-height: 250px;
+    max-height: 230px;
     margin-top: 20px;
     object-fit: contain;
   }
