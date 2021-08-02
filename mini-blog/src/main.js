@@ -5,12 +5,20 @@ import store from "./store";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import * as VueGoogleMaps from "vue2-google-maps";
 
 import firebase from "firebase";
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: "AIzaSyDMPNfjWScT7zrzMQ1XvMaEe5aWra12c7o",
+    libraries: "places",
+  },
+});
 
 const firebaseConfig = {
   apiKey: "AIzaSyBc7TJhIpkmV8dIC5WPdvYL8Ufo01CtEak",

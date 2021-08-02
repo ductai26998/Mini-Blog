@@ -1,7 +1,7 @@
 <template>
   <div class="blogs container-fluid">
     <div class="blogs__up">
-      <h1 class="blogs__up__title">Our Blog</h1>
+      <h1 class="blogs__up__title m-80">Our Blog</h1>
       <p class="blogs__up__breadcrumbs">
         <span>
           <router-link to="/"
@@ -362,6 +362,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.m-80{
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
 a {
   text-decoration: none;
   color: #588da8;
@@ -428,6 +432,7 @@ a {
   }
   .blog-item__info__title {
     font-weight: 500;
+    cursor: pointer;
   }
   .blog-item__info__author {
     display: flex;
@@ -438,10 +443,12 @@ a {
       height: 50px;
       border-radius: 50%;
       background-image: url(../assets/images/login-cover.jpg);
+      cursor: pointer;
     }
     .author__name {
       margin: 0 0 0 8px;
       font-size: 17px;
+      cursor: pointer;
     }
   }
 }

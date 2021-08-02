@@ -83,7 +83,7 @@
 </template>
 
 <script>
-import Modal from '../components/Modal.vue';
+import Modal from "../components/Modal.vue";
 import NavAdmin from "../components/NavAdmin.vue";
 export default {
   data() {

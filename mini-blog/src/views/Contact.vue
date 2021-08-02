@@ -172,7 +172,7 @@
                   </div>
                 </div>
                 <div class="col-md-5 p-0">
-                  <div id="map" class="bg-white"></div>
+                  <GoogleMap />
                 </div>
               </div>
             </div>
@@ -184,7 +184,12 @@
 </template>
 
 <script>
-export default {};
+import GoogleMap from "../components/GoogleMap.vue";
+export default {
+  components: {
+    GoogleMap,
+  },
+};
 </script>
 
 <style lang="scss" scoped>

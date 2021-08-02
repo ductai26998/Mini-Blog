@@ -19,7 +19,7 @@ export default new Vuex.Store({
     logout() {
       firebase.auth().signOut();
       this.$router.push("auth/login");
-    }
+    },
   },
   actions: {},
   modules: {},

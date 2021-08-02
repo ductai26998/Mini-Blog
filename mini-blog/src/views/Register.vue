@@ -144,7 +144,7 @@ $font-2: serif, cursive;
   position: relative;
   z-index: 1;
   .register-container {
-    margin: 5vh 20vw;
+    margin: 5vh 15vw;
     display: flex;
     flex-direction: row;
     border-radius: 20px;
@@ -196,7 +196,7 @@ $font-2: serif, cursive;
   .welcome {
     font-weight: 400;
     line-height: 24px;
-    color: rgba(0,0,0,0.8);
+    color: rgba(0, 0, 0, 0.8);
     margin-top: 3vh;
     font-size: 18px;
     margin-bottom: 3vh;
@@ -233,7 +233,7 @@ $font-2: serif, cursive;
   form {
     display: flex;
     flex-direction: column;
-     label {
+    label {
       text-align: left;
       margin-top: 8px;
     }

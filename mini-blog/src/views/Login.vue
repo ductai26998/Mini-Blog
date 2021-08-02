@@ -61,7 +61,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import "../assets/scss/style.scss";
 
 @mixin font-style-1 {
