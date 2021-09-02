@@ -12,7 +12,11 @@
       </p>
     </div>
     <div class="blogs__main">
-      <div class="blog-item col-md-6 col-lg-4">
+      <div
+        class="blog-item col-md-6 col-lg-4"
+        v-for="blog in blogs"
+        :key="blog.id"
+      >
         <a href="#">
           <div class="blog-item__img"></div>
         </a>
@@ -20,7 +24,7 @@
           <p class="blog-item__info-1">
             <a href="#" class="date">
               <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
+              <span>{{ blog.release_date }}</span>
             </a>
             <a href="#" class="role">
               <i class="fas fa-user"></i>
@@ -32,315 +36,7 @@
             </a>
           </p>
           <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
-          </h2>
-          <div class="blog-item__info__author">
-            <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
-          </div>
-        </div>
-      </div>
-      <div class="blog-item col-md-6 col-lg-4">
-        <a href="#">
-          <div class="blog-item__img"></div>
-        </a>
-        <div class="blog-item__info">
-          <p class="blog-item__info-1">
-            <a href="#" class="date">
-              <i class="far fa-calendar-alt"></i>
-              <span>7/29/2021</span>
-            </a>
-            <a href="#" class="role">
-              <i class="fas fa-user"></i>
-              <span>ADMIN</span>
-            </a>
-            <a href="#" class="nums-comment">
-              <i class="fas fa-comment"></i>
-              <span>3</span>
-            </a>
-          </p>
-          <h2 class="blog-item__info__title">
-            Turning a digital brand into a real world experience
+            {{ blog.title }}
           </h2>
           <div class="blog-item__info__author">
             <div class="author__avatar"></div>
@@ -354,15 +50,49 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/storage";
+import { app } from "../main";
+
 export default {
   data() {
-    return {};
+    return {
+      blogs: [],
+    };
+  },
+  async created() {
+    try {
+      // get all blog from Firestore Database
+      let db = await firebase.firestore(app);
+
+      const blogsRef = db.collection("blogs");
+      const snapshot = await blogsRef.get();
+      if (snapshot.empty) {
+        console.log("No matching documents.");
+        return;
+      }
+
+      snapshot.forEach((doc) => {
+        var date = new Date(doc.data().release_date.seconds * 1000);
+        console.log(date);
+        let blogInfo = {
+          id: doc.data().id,
+          content: doc.data().content,
+          release_date:
+            date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),
+          title: doc.data().title,
+        };
+        this.blogs.push(blogInfo);
+      });
+    } catch (err) {
+      alert(err);
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.m-80{
+.m-80 {
   margin-top: 80px;
   margin-bottom: 80px;
 }

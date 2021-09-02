@@ -11,6 +11,7 @@
           class="input-title"
           type="text"
           placeholder="Your blog title"
+          @keydown="$event.keyCode === 13 ? $event.preventDefault() : false"
           v-model="title"
         />
       </div>
@@ -82,10 +83,11 @@ export default {
     },
     async postBlog() {
       try {
-        const id = Math.random().toString(36).substr(2, 9);
+        const id = Date.now().toString();
         const date = new Date();
 
         const data = {
+          id: id,
           title: this.title,
           content: this.content,
           image_id: id,
@@ -95,7 +97,7 @@ export default {
 
         // Upload info of new blog to Firestore Database
         let db = await firebase.firestore(app);
-        // Add a new document in collection "cities"
+        // Add a new document in collection "blogs"
         await db
           .collection("blogs")
           .doc(id)

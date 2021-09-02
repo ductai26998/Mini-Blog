@@ -19,7 +19,7 @@
           <li>
             <router-link
               class="nav-item"
-              :class="currentPage == 'home' ? active : ''"
+              :class="currentPage == 'home' ? 'active' : ''"
               to="/"
               >Home</router-link
             >
@@ -48,11 +48,12 @@ export default {
   name: "Navbar",
   data() {
     return {
+      currentPage: "home",
       choice: false,
     };
   },
-  created: {
-    currentPage: "home",
+  created() {
+    
   }
 };
 </script>

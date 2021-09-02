@@ -13,7 +13,7 @@
 import defaultLayout from "./layout/default.vue";
 import unauthLayout from "./layout/unauth.vue";
 import secretLayout from "./layout/secret.vue";
-// import { mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   components: {
@@ -22,10 +22,10 @@ export default {
     secretLayout,
   },
   computed: {
-    // ...mapState(["loggedIn"]),
+    ...mapState(["layoutState"]),
     layout() {
-      if (this.$route.meta.layout === "unauth") return "unauthLayout";
-      else if (this.$route.meta.layout === "secret") return "secretLayout";
+      if (this.layoutState === "unauth") return "unauthLayout";
+      else if (this.layoutState === "secret") return "secretLayout";
       else return "defaultLayout";
     },
   },
