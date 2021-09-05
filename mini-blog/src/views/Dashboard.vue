@@ -31,7 +31,7 @@
                 <li class="user d-flex">
                   <div class="host d-flex" style="width: 25%">
                     <img
-                      src="https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/221046620_4785155921517385_3847089430760383354_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=730e14&_nc_ohc=-oUM_bRuGXEAX-pLoMK&_nc_ht=scontent.fhan14-1.fna&oh=0c06a8941a8689d54f6533ade47fe409&oe=61291C12"
+                      src="https://images.unsplash.com/photo-1630524152048-d6ac36040250?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                       alt=""
                     />
                     <p>Ryan Richart</p>
@@ -93,8 +93,7 @@ export default {
         {
           id: 1,
           users: {
-            thumbnail:
-              "https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/221046620_4785155921517385_3847089430760383354_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=730e14&_nc_ohc=-oUM_bRuGXEAX-pLoMK&_nc_ht=scontent.fhan14-1.fna&oh=0c06a8941a8689d54f6533ade47fe409&oe=61291C12",
+            thumbnail: "../assets/images/author.jpg",
             name: "Ryan Richart",
             location: "Da Nang",
             packname: "VietNam",
@@ -109,7 +108,7 @@ export default {
           id: 2,
           users: {
             thumbnail:
-              "https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/221046620_4785155921517385_3847089430760383354_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=730e14&_nc_ohc=-oUM_bRuGXEAX-pLoMK&_nc_ht=scontent.fhan14-1.fna&oh=0c06a8941a8689d54f6533ade47fe409&oe=61291C12",
+              "https://images.unsplash.com/photo-1630524152048-d6ac36040250?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
             name: "Ryan Richart",
             location: "Da Nang",
             packname: "VietNam",
@@ -124,7 +123,7 @@ export default {
           id: 3,
           users: {
             thumbnail:
-              "https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/221046620_4785155921517385_3847089430760383354_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=730e14&_nc_ohc=-oUM_bRuGXEAX-pLoMK&_nc_ht=scontent.fhan14-1.fna&oh=0c06a8941a8689d54f6533ade47fe409&oe=61291C12",
+              "https://images.unsplash.com/photo-1630524152048-d6ac36040250?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
             name: "Ryan Richart",
             location: "Da Nang",
             packname: "VietNam",
@@ -139,7 +138,7 @@ export default {
           id: 4,
           users: {
             thumbnail:
-              "https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/221046620_4785155921517385_3847089430760383354_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=730e14&_nc_ohc=-oUM_bRuGXEAX-pLoMK&_nc_ht=scontent.fhan14-1.fna&oh=0c06a8941a8689d54f6533ade47fe409&oe=61291C12",
+              "https://images.unsplash.com/photo-1630524152048-d6ac36040250?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
             name: "Ryan Richart",
             location: "Da Nang",
             packname: "VietNam",
@@ -154,7 +153,7 @@ export default {
           id: 5,
           users: {
             thumbnail:
-              "https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/221046620_4785155921517385_3847089430760383354_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=730e14&_nc_ohc=-oUM_bRuGXEAX-pLoMK&_nc_ht=scontent.fhan14-1.fna&oh=0c06a8941a8689d54f6533ade47fe409&oe=61291C12",
+              "https://images.unsplash.com/photo-1630524152048-d6ac36040250?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
             name: "Ryan Richart",
             location: "Da Nang",
             packname: "VietNam",
@@ -169,7 +168,7 @@ export default {
           id: 6,
           users: {
             thumbnail:
-              "https://scontent.fhan14-1.fna.fbcdn.net/v/t1.6435-9/221046620_4785155921517385_3847089430760383354_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=730e14&_nc_ohc=-oUM_bRuGXEAX-pLoMK&_nc_ht=scontent.fhan14-1.fna&oh=0c06a8941a8689d54f6533ade47fe409&oe=61291C12",
+              "https://images.unsplash.com/photo-1630524152048-d6ac36040250?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
             name: "Ryan Richart",
             location: "Da Nang",
             packname: "VietNam",
@@ -194,6 +193,7 @@ export default {
 .dashboard {
   background: #f0f6fb;
   margin-left: 5rem;
+  padding: 5vh 0vw;
   .add-area {
     display: flex;
     flex-direction: row !important;

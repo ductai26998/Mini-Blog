@@ -81,7 +81,8 @@ export default {
   position: relative;
   z-index: 1;
   .login-container {
-    margin: 10vh 20vw;
+    padding: 10vh 0vw;
+    margin: 0vh 20vw;
     display: flex;
     flex-direction: row;
 

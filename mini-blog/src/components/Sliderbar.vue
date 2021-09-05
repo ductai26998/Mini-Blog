@@ -80,8 +80,6 @@ export default {
       }
     }
   }
-  .active {
-  }
   .setting {
     margin: 0 auto;
     margin-top: 52vh;
