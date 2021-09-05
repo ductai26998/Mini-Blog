@@ -18,7 +18,7 @@
         :key="blog.id"
       >
         <a href="#">
-          <div class="blog-item__img"></div>
+          <div :id="blog.id" class="blog-item__img"></div>
         </a>
         <div class="blog-item__info">
           <p class="blog-item__info-1">
@@ -60,33 +60,66 @@ export default {
       blogs: [],
     };
   },
-  async created() {
-    try {
-      // get all blog from Firestore Database
-      let db = await firebase.firestore(app);
+  methods: {
+    async getBlog() {
+      try {
+        // get all blog from Firestore Database
+        let db = await firebase.firestore(app);
 
-      const blogsRef = db.collection("blogs");
-      const snapshot = await blogsRef.get();
-      if (snapshot.empty) {
-        console.log("No matching documents.");
-        return;
+        const blogsRef = db.collection("blogs");
+        const snapshot = await blogsRef.get();
+        if (snapshot.empty) {
+          console.log("No matching documents.");
+          return;
+        }
+
+        snapshot.forEach((doc) => {
+          var date = new Date(doc.data().release_date.seconds * 1000);
+          let blogInfo = {
+            id: doc.data().id,
+            content: doc.data().content,
+            release_date:
+              date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),
+            title: doc.data().title,
+          };
+          this.blogs.push(blogInfo);
+          this.getImage(doc.data().id);
+        });
+        this.blogs = this.blogs.sort((firstEl, secondEl) => {
+          return secondEl.id - firstEl.id;
+        });
+      } catch (err) {
+        alert(err);
       }
+    },
+    getImage(id) {
+      // Ref to firebase storage
+      const imgRef = firebase.storage().ref();
 
-      snapshot.forEach((doc) => {
-        var date = new Date(doc.data().release_date.seconds * 1000);
-        console.log(date);
-        let blogInfo = {
-          id: doc.data().id,
-          content: doc.data().content,
-          release_date:
-            date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),
-          title: doc.data().title,
-        };
-        this.blogs.push(blogInfo);
-      });
-    } catch (err) {
-      alert(err);
-    }
+      imgRef
+        .child("images/blogs/" + id + ".png")
+        .getDownloadURL()
+        .then((url) => {
+          // `url` is the download URL for 'images/<imageName>.png'
+
+          // This can be downloaded directly:
+          var xhr = new XMLHttpRequest();
+          xhr.responseType = "blob";
+          xhr.open("GET", url);
+          xhr.send();
+
+          // Or inserted into an <img> element
+          var imgBlog = document.getElementById(id);
+          imgBlog.style.backgroundImage = `url(${url})`;
+          // img.setAttribute("src", url);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  created() {
+    this.getBlog();
   },
 };
 </script>
