@@ -24,11 +24,90 @@
             <router-link class="nav-item" to="/contact">Contact</router-link>
           </li>
           <li><router-link class="nav-item" to="/blogs">Blogs</router-link></li>
-          <li>
-            <span class="nav-item logout" @click="logout">Logout</span>
+          <li class="info-user d-flex">
+            <router-link class="nav-item" to="/blogs">
+              <img
+                src="https://preview.colorlib.com/theme/onlineedu/assets/img/gallery/xteam3.png.pagespeed.ic.ZjKltUw-pd.webp"
+                alt=""
+              />
+            </router-link>
+            <p>Duyên</p>
           </li>
+          <li class="manager-user">
+            <div
+              class="showControl"
+              @click="btnControlVisible = !btnControlVisible"
+            >
+              <i class="fas fa-sort-down"></i>
+            </div>
+            <div
+              class="manager-show"
+              :style="btnControlVisible ? 'display: block' : 'display: none'"
+            >
+              <ul class="manager" style="padding-left: 0px">
+                <li class="infor d-flex">
+                  <img
+                    src="https://preview.colorlib.com/theme/onlineedu/assets/img/gallery/xteam3.png.pagespeed.ic.ZjKltUw-pd.webp"
+                    alt=""
+                  />
+                  <div class="show-infor">
+                    <span class="name">Trương Thị Mỹ Duyên</span>
+                    <span class="personalPage">Xem trang cá nhân của bạn</span>
+                  </div>
+                </li>
+                <hr />
+                <li class="infor d-flex post">
+                  <i class="fas fa-info-circle"></i>
+                  <div class="show-infor" @click="isAdding=true">
+                    <span class="name">Đăng bài</span>
+                    <span class="personalPage"
+                      >Góp phần cải thiện chất lượng Moose</span
+                    >
+                  </div>
+                </li>
+                <hr />
+                <li class="infor d-flex logout">
+                  <i class="fas fa-sign-out-alt"></i>
+                  <div class="show-infor">
+                    <span class="name" @click="logout">Đăng xuất</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- <li>
+            <span class="nav-item logout" @click="logout">Logout</span>
+          </li> -->
         </ul>
       </div>
+    </div>
+    <div
+      class="createArticle"
+      :style="isAdding ? 'display: block' : 'display: none'"
+    >
+      <div class="content">
+        <span class="contentAddNew">Tạo bài viết</span>
+        <div class="close" @click="isAdding=false"><i class="fas fa-times"></i></div>
+      </div>
+      <hr />
+      <div class="content person d-flex">
+        <img
+          src="https://preview.colorlib.com/theme/onlineedu/assets/img/gallery/xteam3.png.pagespeed.ic.ZjKltUw-pd.webp"
+          alt=""
+        />
+        <span>Trương Thị Mỹ Duyên</span>
+      </div>
+      <div class="articleText">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Username"
+          aria-label="Username"
+          aria-describedby="basic-addon1"
+        />
+      </div>
+      <hr />
+      <button type="button" class="btn btn-primary">Primary</button>
     </div>
   </nav>
 </template>
@@ -43,6 +122,8 @@ export default {
   data() {
     return {
       choice: false,
+      btnControlVisible: false,
+      isAdding: false,
     };
   },
   methods: {
@@ -55,7 +136,64 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.createArticle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 30vw;
+  transform: translate(-50%, -50%);
+  background: #2f3031;
+  padding: 10px;
+  border-radius: 5px;
+  color: #e4e6eb;
+  hr {
+    margin: 0px;
+  }
+  .content {
+    padding: 12px;
+    position: relative;
+    .contentAddNew {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .close {
+      position: absolute;
+      top: 15%;
+      right: 5%;
+      padding: 5px 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+  .person {
+    align-items: center;
+    img {
+      width: 40px;
+      border-radius: 50%;
+    }
+    span {
+      margin-left: 10px;
+    }
+  }
+  .articleText {
+    height: 30vh;
+    input {
+      border: none;
+      background: transparent;
+    }
+    input:focus {
+      box-shadow: none !important;
+      color: #e4e6eb;
+    }
+  }
+  button {
+    width: 100%;
+  }
+  button:focus {
+    box-shadow: none!important;
+  }
+}
 .navbar .container {
   width: 800px;
 }
@@ -118,5 +256,105 @@ export default {
 }
 .show {
   justify-content: flex-start;
+}
+.navbar-nav {
+  li {
+    margin: auto;
+  }
+  .info-user {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px 5px 0px 5px;
+    border-radius: 25px;
+
+    margin-right: 20px;
+    a {
+      padding: 0px;
+      img {
+        width: 30px;
+        border-radius: 50%;
+        object-fit: contain;
+        margin-right: 0.5rem;
+      }
+    }
+    p {
+      color: #fff;
+    }
+  }
+  .manager-user {
+    position: relative;
+    .manager {
+      li {
+        cursor: pointer;
+      }
+    }
+    .showControl {
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+    }
+    a {
+      padding: 8px 16px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .manager-show {
+      margin-top: 2vh;
+      position: absolute;
+      background: #171819;
+      padding: 10px 0px !important;
+      right: 50%;
+      width: 300px;
+      display: none;
+      .manager {
+        .infor {
+          padding: 10px 20px;
+          background: #171819;
+          justify-content: center;
+          align-items: flex-start;
+          img {
+            width: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+          }
+          .show-infor {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            padding-left: 10px;
+            .name {
+              font-size: 1.0625rem;
+              font-weight: 600;
+              color: #e4e6eb;
+              line-height: 1.1765;
+            }
+            .personalPage {
+              font-size: 0.9375rem;
+              font-weight: 400;
+              line-height: 1.3333;
+              color: #b0b3b8;
+            }
+          }
+        }
+        .post {
+          i {
+            color: #fff;
+            background: rgb(68, 68, 68);
+            padding: 10px;
+            border-radius: 50%;
+          }
+        }
+        .logout {
+          justify-content: end;
+          align-items: center;
+          i {
+            color: #fff;
+            background: rgb(68, 68, 68);
+            padding: 10px;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
 }
 </style>
