@@ -29,7 +29,7 @@
               <div class="col-md-4">
                 <div class="author text-start">
                   <img
-                    src="https://scontent.fpnh22-2.fna.fbcdn.net/v/t1.6435-9/215157669_2839741186278818_2112320654823048520_n.jpg?_nc_cat=100&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=7nZkq1MGXBEAX_rxjpa&_nc_ht=scontent.fpnh22-2.fna&oh=fc4b1fc1f51bfba358dcf4af24613355&oe=6125E0B4"
+                    src="../assets/images/author.jpg"
                     alt=""
                   />
                   <div class="text">

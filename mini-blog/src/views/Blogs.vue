@@ -22,7 +22,7 @@
         </a>
         <div class="blog-item__info">
           <p class="blog-item__info-1">
-            <a href="#" class="date">
+            <a href="/blogdetail/1" class="date">
               <i class="far fa-calendar-alt"></i>
               <span>{{ blog.release_date }}</span>
             </a>

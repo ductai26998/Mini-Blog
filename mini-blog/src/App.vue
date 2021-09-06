@@ -21,12 +21,17 @@ export default {
     unauthLayout,
     secretLayout,
   },
+  created() {},
+  beforeMount() {},
   computed: {
     ...mapState(["layoutState"]),
     layout() {
-      if (this.layoutState === "unauth") return "unauthLayout";
-      else if (this.layoutState === "secret") return "secretLayout";
+      if (this.$route.meta.layout === "unauth") return "unauthLayout";
+      else if (this.$route.meta.layout === "secret") return "secretLayout";
       else return "defaultLayout";
+    },
+    checkLayout() {
+      return "hihi";
     },
   },
   // created: {

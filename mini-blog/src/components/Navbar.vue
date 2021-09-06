@@ -52,9 +52,7 @@ export default {
       choice: false,
     };
   },
-  created() {
-    
-  }
+  created() {},
 };
 </script>
 

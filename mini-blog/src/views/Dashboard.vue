@@ -193,7 +193,10 @@ export default {
 .dashboard {
   background: #f0f6fb;
   margin-left: 5rem;
-  padding: 5vh 0vw;
+  padding: 1vh 0vw 5vh 0vh;
+  @media screen and (max-width: 996px) {
+    margin-left: 0px;
+  }
   .add-area {
     display: flex;
     flex-direction: row !important;

@@ -1,5 +1,5 @@
 <template>
-  <div class="sliderbar">
+  <div class="sliderbar" :class="isResponsive ? 'sliderbar-mobile' : ''">
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -9,16 +9,19 @@
           <li class="item-control active">
             <router-link to="/">
               <i class="fab fa-facebook-f"></i>
+              <div class="item-hover">Facebook</div>
             </router-link>
           </li>
           <li class="item-control">
             <router-link to="/">
               <i class="fas fa-newspaper"></i>
             </router-link>
+            <div class="item-hover">Article</div>
           </li>
           <li class="item-control">
             <router-link to="/">
               <i class="fas fa-user"></i>
+              <div class="item-hover">User</div>
             </router-link>
           </li>
         </ul>
@@ -29,12 +32,36 @@
         </div>
       </div>
     </div>
+    <div
+      class="sliderbar-res"
+      :style="isResponsive ? 'display: block' : 'display: none'"
+      @click="isResponsive = !isResponsive"
+    >
+      <router-link to="">
+        <i class="fas fa-cog"></i>
+      </router-link>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Sliderbar",
+  data() {
+    return {
+      windowWidth: window.innerWidth,
+    };
+  },
+  mounted() {
+    window.addEventListener("resize", () => {
+      this.windowWidth = window.innerWidth;
+    });
+  },
+  computed: {
+    isResponsive() {
+      return this.windowWidth <= 996;
+    },
+  },
 };
 </script>
 
@@ -47,7 +74,7 @@ export default {
   width: 5rem;
   background: #16202f;
   display: flex;
-  overflow: hidden;
+  overflow: visible;
   transition: 0.4s ease-in-out;
   display: flex;
   color: #fff;
@@ -75,9 +102,35 @@ export default {
       width: 2.5rem;
       border-radius: 50%;
       cursor: pointer;
+      position: relative;
       a {
         color: #fff !important;
       }
+      .item-hover {
+        position: absolute;
+        top: 15%;
+        left: 120%;
+        background: rgb(219, 203, 206);
+        z-index: 5;
+        padding: 0.5vh 0.5vw;
+        border-radius: 5px;
+        display: none;
+        transition: 1s ease-in-out;
+      }
+      .item-hover:after {
+        position: absolute;
+        content: "";
+        width: 15px;
+        height: 15px;
+        background: rgb(219, 203, 206);
+        top: 25%;
+        left: -5%;
+        transform: rotate(45deg);
+        z-index: -1;
+      }
+    }
+    .item-control:hover .item-hover {
+      display: block;
     }
   }
   .setting {
@@ -91,5 +144,23 @@ export default {
       color: rgba(225, 235, 245, 0.87) !important;
     }
   }
+  // @media screen and (max-width: 996px) {
+  //   transform: translateX(-5rem);
+  // }
+  .sliderbar-res {
+    margin-top: 8vh;
+    padding: 12px 15px;
+    background: #16202f;
+    width: fit-content;
+    height: fit-content;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    a {
+      color: #fff;
+    }
+  }
+}
+.sliderbar-mobile {
+  transform: translateX(-5rem);
 }
 </style>

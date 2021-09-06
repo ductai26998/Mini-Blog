@@ -21,6 +21,9 @@ export default new Vuex.Store({
       firebase.auth().signOut();
       this.$router.push("auth/login");
     },
+    updateStateLayout(state, payload) {
+      return (state.layoutState = payload);
+    },
   },
   actions: {},
   modules: {},
