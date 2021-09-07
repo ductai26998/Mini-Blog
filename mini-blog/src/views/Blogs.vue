@@ -22,7 +22,7 @@
         </a>
         <div class="blog-item__info">
           <p class="blog-item__info-1">
-            <a href="/blogdetail/1" class="date">
+            <a href="#" class="date">
               <i class="far fa-calendar-alt"></i>
               <span>{{ blog.release_date }}</span>
             </a>
@@ -85,6 +85,8 @@ export default {
           this.blogs.push(blogInfo);
           this.getImage(doc.data().id);
         });
+
+        // sort all blog from nearest
         this.blogs = this.blogs.sort((firstEl, secondEl) => {
           return secondEl.id - firstEl.id;
         });
