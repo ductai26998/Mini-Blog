@@ -30,9 +30,6 @@ export default {
       else if (this.$route.meta.layout === "secret") return "secretLayout";
       else return "defaultLayout";
     },
-    checkLayout() {
-      return "hihi";
-    },
   },
   // created: {
   //   getLayout() {
