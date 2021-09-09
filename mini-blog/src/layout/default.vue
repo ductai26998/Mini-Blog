@@ -5,7 +5,6 @@
     <slot />
     <Subcribe />
     <Footer />
-    <Navbar v-if="!loggedIn" />
   </div>
 </template>
 
