@@ -105,22 +105,24 @@ export default {
     async submit() {
       if (!this.error) {
         try {
-          const data = {
+          const id = Math.floor(Math.random() * 1000000000) + "";
+          const user = {
+            id: id,
             fullName: this.fullName,
             email: this.email,
             username: this.username,
             password: this.password,
+            role: "user",
           };
 
-          const user = await firebase
+          await firebase
             .auth()
             .createUserWithEmailAndPassword(this.email, this.password);
-          console.log(user);
 
           let db = await firebase.firestore(app);
           // Add a new document in collection "cities"
           db.collection("users")
-            .add(data)
+            .add(user)
             .then(() => {
               console.log("Document successfully written!");
             });
