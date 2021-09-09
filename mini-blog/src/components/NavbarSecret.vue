@@ -31,7 +31,7 @@
                 alt=""
               />
             </router-link>
-            <p>Duyên</p>
+            <p>{{ user.username }}</p>
           </li>
           <li class="manager-user">
             <div
@@ -51,14 +51,14 @@
                     alt=""
                   />
                   <div class="show-infor">
-                    <span class="name">Trương Thị Mỹ Duyên</span>
+                    <span class="name">{{ user.fullName }}</span>
                     <span class="personalPage">Xem trang cá nhân của bạn</span>
                   </div>
                 </li>
                 <hr />
                 <li class="infor d-flex post">
                   <i class="fas fa-info-circle"></i>
-                  <div class="show-infor" @click="isAdding=true">
+                  <div class="show-infor" @click="isAdding = true">
                     <span class="name">Đăng bài</span>
                     <span class="personalPage"
                       >Góp phần cải thiện chất lượng Moose</span
@@ -87,7 +87,9 @@
     >
       <div class="content">
         <span class="contentAddNew">Tạo bài viết</span>
-        <div class="close" @click="isAdding=false"><i class="fas fa-times"></i></div>
+        <div class="close" @click="isAdding = false">
+          <i class="fas fa-times"></i>
+        </div>
       </div>
       <hr />
       <div class="content person d-flex">
@@ -115,7 +117,7 @@
 <script>
 import firebase from "firebase";
 import "firebase/auth";
-import { mapMutations } from "vuex";
+import { mapState } from "vuex";
 
 export default {
   name: "Navbar",
@@ -126,10 +128,11 @@ export default {
       isAdding: false,
     };
   },
+  computed: mapState({ user: (state) => state.user }),
   methods: {
-    ...mapMutations(["logout"]),
     logout() {
       firebase.auth().signOut();
+      this.$cookies.remove("userId");
       this.$router.replace({ path: "auth/login" });
     },
   },
@@ -191,7 +194,7 @@ export default {
     width: 100%;
   }
   button:focus {
-    box-shadow: none!important;
+    box-shadow: none !important;
   }
 }
 .navbar .container {
@@ -262,8 +265,9 @@ export default {
     margin: auto;
   }
   .info-user {
+    align-items: center;
     background: rgba(255, 255, 255, 0.1);
-    padding: 8px 5px 0px 5px;
+    padding: 5px 5px;
     border-radius: 25px;
 
     margin-right: 20px;
@@ -278,6 +282,7 @@ export default {
     }
     p {
       color: #fff;
+      margin: 0;
     }
   }
   .manager-user {
@@ -291,6 +296,9 @@ export default {
       padding: 8px 16px;
       background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
+      .fa-sort-down {
+        color: #fff;
+      }
     }
     a {
       padding: 8px 16px;
