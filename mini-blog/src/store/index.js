@@ -8,6 +8,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    currentPage: "home",
     loggedIn: false,
     layoutState: "default",
     user: null,

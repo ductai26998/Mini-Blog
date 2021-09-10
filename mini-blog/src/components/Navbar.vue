@@ -16,7 +16,7 @@
       </button>
       <div class="collapse navbar-collapse" :class="choice ? 'show' : ''">
         <ul class="navbar-nav ml-auto">
-          <li>
+          <li class="m-1">
             <router-link
               class="nav-item"
               :class="currentPage == 'home' ? 'active' : ''"
@@ -24,15 +24,34 @@
               >Home</router-link
             >
           </li>
-          <li><router-link class="nav-item" to="/about">About</router-link></li>
-          <li>
-            <router-link class="nav-item" to="/contact">Contact</router-link>
+          <li class="m-1">
+            <router-link
+              class="nav-item"
+              :class="currentPage == 'about' ? 'active' : ''"
+              to="/about"
+              >About</router-link
+            >
           </li>
-          <li><router-link class="nav-item" to="/blogs">Blogs</router-link></li>
-          <li>
+          <li class="m-1">
+            <router-link
+              class="nav-item"
+              :class="currentPage == 'contact' ? 'active' : ''"
+              to="/contact"
+              >Contact</router-link
+            >
+          </li>
+          <li class="m-1">
+            <router-link
+              class="nav-item"
+              :class="currentPage == 'blogs' ? 'active' : ''"
+              to="/blogs"
+              >Blogs</router-link
+            >
+          </li>
+          <li class="m-1">
             <router-link class="nav-item" to="/auth/login">Login</router-link>
           </li>
-          <li>
+          <li class="m-1">
             <router-link class="nav-item" to="/auth/register"
               >Register</router-link
             >
@@ -44,14 +63,16 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Navbar",
   data() {
     return {
-      currentPage: "home",
       choice: false,
     };
   },
+  computed: mapState(["currentPage"]),
   created() {},
 };
 </script>
@@ -92,7 +113,7 @@ export default {
 }
 .nav-item {
   font-size: 15px;
-  padding: 1.5rem 20px;
+  padding: 0 20px;
   color: #000000;
   text-decoration: none;
   font-weight: 500;
@@ -115,6 +136,6 @@ export default {
   box-shadow: none !important;
 }
 .show {
-  justify-content: flex-start;
+  justify-content: center;
 }
 </style>

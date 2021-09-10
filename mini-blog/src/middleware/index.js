@@ -4,6 +4,7 @@ import firebase from "firebase";
 import { app } from "../main";
 
 let validate = (to, from, next) => {
+  store.state.currentPage = to.name;
   const userId = Vue.$cookies.get("userId");
   if (userId && to.name != "login") {
     setUser(userId);

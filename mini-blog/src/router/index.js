@@ -8,31 +8,32 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "home",
     component: Home,
   },
   {
     path: "/about",
-    name: "About",
+    name: "about",
     component: () => import("../views/About.vue"),
   },
   {
     path: "/contact",
-    name: "Contact",
+    name: "contact",
     component: () => import("../views/Contact.vue"),
   },
   {
     path: "/personal/:id",
-    name: "Personal",
+    name: "personal",
     component: () => import("../views/PersonalPage.vue"),
   },
   {
     path: "/blogs",
-    name: "Blogs",
+    name: "blogs",
     component: () => import("../views/Blogs.vue"),
   },
   {
     path: "/blogs/:id",
+    name: "blogDetail",
     component: () => import("../views/BlogDetail.vue"),
   },
   {

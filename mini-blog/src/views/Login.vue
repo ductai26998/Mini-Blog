@@ -106,6 +106,7 @@ export default {
     flex-direction: row;
 
     @media screen and (max-width: 1280px) {
+      padding: 0;
       margin: 10vh 15vw;
     }
 

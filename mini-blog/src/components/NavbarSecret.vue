@@ -16,15 +16,39 @@
       </button>
       <div class="collapse navbar-collapse" :class="choice ? 'show' : ''">
         <ul class="navbar-nav ml-auto">
-          <li>
-            <router-link class="nav-item active" to="/">Home</router-link>
+          <li class="m-1">
+            <router-link
+              class="nav-item"
+              :class="currentPage == 'home' ? 'active' : ''"
+              to="/"
+              >Home</router-link
+            >
           </li>
-          <li><router-link class="nav-item" to="/about">About</router-link></li>
-          <li>
-            <router-link class="nav-item" to="/contact">Contact</router-link>
+          <li class="m-1">
+            <router-link
+              class="nav-item"
+              :class="currentPage == 'about' ? 'active' : ''"
+              to="/about"
+              >About</router-link
+            >
           </li>
-          <li><router-link class="nav-item" to="/blogs">Blogs</router-link></li>
-          <li class="info-user d-flex">
+          <li class="m-1">
+            <router-link
+              class="nav-item"
+              :class="currentPage == 'contact' ? 'active' : ''"
+              to="/contact"
+              >Contact</router-link
+            >
+          </li>
+          <li class="m-1">
+            <router-link
+              class="nav-item"
+              :class="currentPage == 'blogs' ? 'active' : ''"
+              to="/blogs"
+              >Blogs</router-link
+            >
+          </li>
+          <li class="info-user d-flex m-1">
             <router-link class="nav-item" to="/blogs">
               <img
                 src="https://preview.colorlib.com/theme/onlineedu/assets/img/gallery/xteam3.png.pagespeed.ic.ZjKltUw-pd.webp"
@@ -74,15 +98,12 @@
                 <li class="infor d-flex logout">
                   <i class="fas fa-sign-out-alt"></i>
                   <div class="show-infor">
-                    <span class="name" @click="logout">Đăng xuất</span>
+                    <span class="name" @click="logout">Logout</span>
                   </div>
                 </li>
               </ul>
             </div>
           </li>
-          <!-- <li>
-            <span class="nav-item logout" @click="logout">Logout</span>
-          </li> -->
         </ul>
       </div>
     </div>
@@ -133,7 +154,7 @@ export default {
       isAdding: false,
     };
   },
-  computed: mapState({ user: (state) => state.user }),
+  computed: mapState({ user: (state) => state.user, currentPage: (state) => state.currentPage }),
   methods: {
     logout() {
       firebase.auth().signOut();
@@ -235,9 +256,12 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
+
+
+
 .nav-item {
   font-size: 15px;
-  padding: 1.5rem 20px;
+  padding: 0 20px;
   color: #000000;
   text-decoration: none;
   font-weight: 500;
@@ -263,7 +287,7 @@ export default {
   box-shadow: none !important;
 }
 .show {
-  justify-content: flex-start;
+  justify-content: center;
 }
 .navbar-nav {
   li {
