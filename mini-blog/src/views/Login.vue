@@ -32,6 +32,7 @@ import firebase from "firebase";
 import "firebase/auth";
 import { mapState } from "vuex";
 import { mapMutations } from "vuex";
+import { app } from "../main";
 
 export default {
   data() {
@@ -40,21 +41,39 @@ export default {
       password: "",
     };
   },
-  computed: mapState({ loggedIn: (state) => state.loggedIn }),
+  computed: mapState({
+    loggedIn: (state) => state.loggedIn,
+    user: (state) => state.user,
+  }),
   methods: {
-    ...mapMutations(["changeState"]),
+    ...mapMutations(["changeState", "setUser"]),
     async submit() {
       try {
-        console.log("before: " + this.loggedIn);
         await firebase
           .auth()
           .signInWithEmailAndPassword(this.email, this.password);
         this.changeState();
-        console.log("after: " + this.loggedIn);
+        this.login();
         this.$router.push({ path: "/" });
       } catch (err) {
         alert(err);
       }
+    },
+    async login() {
+      let db = await firebase.firestore(app);
+      db.collection("users")
+        .where("email", "==", this.email)
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            //  Set cookies
+            this.setUser(doc.data());
+            this.$cookies.set("userId", doc.data().id);
+          });
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
     },
   },
 };
@@ -81,7 +100,8 @@ export default {
   position: relative;
   z-index: 1;
   .login-container {
-    margin: 10vh 20vw;
+    padding: 10vh 0vw;
+    margin: 0vh 20vw;
     display: flex;
     flex-direction: row;
 

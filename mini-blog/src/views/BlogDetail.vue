@@ -535,9 +535,9 @@ export default {};
             box-shadow: none;
           }
           input[type="submit"] {
-              background: #588da8!important;
-              border: 1px solid #588da8!important;
-              color: #fff!important;
+            background: #588da8 !important;
+            border: 1px solid #588da8 !important;
+            color: #fff !important;
           }
         }
       }

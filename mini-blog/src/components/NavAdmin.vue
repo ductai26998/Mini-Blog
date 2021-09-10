@@ -7,10 +7,13 @@
       <div class="navbar-item pull-left"><h3 class="title">Dashboard</h3></div>
       <ul class="nav navbar-nav pull-right list-item d-flex">
         <li class="nav-item search d-flex align-items-center">
-          <router-link to="#" class="icon-funct"
-            ><i class="fas fa-search"></i
-          ></router-link>
-          <div class="form-search mb-3">
+          <button @click="isSearch = !isSearch">
+            <i class="fas fa-search"></i>
+          </button>
+          <div
+            class="form-search mb-3"
+            :style="isSearch ? 'display: flex' : 'display: none'"
+          >
             <input
               type="text"
               class="form-control"
@@ -45,6 +48,11 @@
 <script>
 export default {
   name: "NavAdmin",
+  data() {
+    return {
+      isSearch: false,
+    };
+  },
 };
 </script>
 
@@ -99,6 +107,10 @@ export default {
       }
       .search {
         position: relative;
+        button {
+          background-color: transparent;
+          border: none;
+        }
         .form-search {
           padding: 20px;
           width: 240px;
@@ -108,9 +120,8 @@ export default {
           border: 1px solid #ced4da;
           border-radius: 5px;
           left: -200px;
-          background: aqua;
           display: flex;
-          display: none;
+          display: flex;
           input {
             border-top-right-radius: 0px !important;
             border-bottom-right-radius: 0px !important;
@@ -124,6 +135,12 @@ export default {
             border: 1px solid #ced4da;
             border-top-right-radius: 0.25rem;
             border-bottom-right-radius: 0.25rem;
+            button:focus {
+              box-shadow: none !important;
+            }
+          }
+          span:focus {
+            border-color: #86b7fe !important;
           }
         }
       }

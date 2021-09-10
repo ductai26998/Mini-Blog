@@ -63,11 +63,11 @@
               Get Start
             </button>
           </div>
+          <div class="login-account text-center">
+            Already have a account?
+            <router-link to="/auth/login">Login</router-link>
+          </div>
         </form>
-        <div class="login-account text-center">
-          Already have a account?
-          <router-link to="/auth/login">Login</router-link>
-        </div>
       </div>
       <div class="register-container__right"></div>
     </div>
@@ -105,22 +105,24 @@ export default {
     async submit() {
       if (!this.error) {
         try {
-          const data = {
+          const id = Math.floor(Math.random() * 1000000000) + "";
+          const user = {
+            id: id,
             fullName: this.fullName,
             email: this.email,
             username: this.username,
             password: this.password,
+            role: "user",
           };
 
-          const user = await firebase
+          await firebase
             .auth()
             .createUserWithEmailAndPassword(this.email, this.password);
-          console.log(user);
 
           let db = await firebase.firestore(app);
           // Add a new document in collection "cities"
           db.collection("users")
-            .add(data)
+            .add(user)
             .then(() => {
               console.log("Document successfully written!");
             });
@@ -139,12 +141,13 @@ export default {
 $font-1: "Pacifico", cursive;
 $font-2: serif, cursive;
 .wrapper {
-  background-image: url("https://scontent.fsgn2-4.fna.fbcdn.net/v/t1.6435-9/31507603_1500327223411862_4638707908249387008_n.jpg?_nc_cat=101&ccb=1-3&_nc_sid=19026a&_nc_ohc=JXL0kLfRd50AX8wEAgN&_nc_ht=scontent.fsgn2-4.fna&oh=8948367be9e7214adb401be68d809feb&oe=61254A01");
+  background-image: url("../assets/images/register.jpg");
   background-size: cover;
   position: relative;
   z-index: 1;
   .register-container {
-    margin: 5vh 15vw;
+    padding: 5vh 0vw;
+    margin: 0vh 15vw;
     display: flex;
     flex-direction: row;
     border-radius: 20px;
@@ -184,9 +187,10 @@ $font-2: serif, cursive;
 }
 .register-container__left {
   width: 50%;
-  height: 90vh;
   background: #fff;
   padding: 10px 30px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   .title {
     font-weight: 600;
     font-family: "Pacifico", cursive;
@@ -289,8 +293,9 @@ $font-2: serif, cursive;
 }
 .register-container__right {
   width: 50%;
-  height: 90vh;
-  background-image: url("https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/31318000_1497099090401342_867618865926897664_n.jpg?_nc_cat=111&ccb=1-3&_nc_sid=19026a&_nc_ohc=vM4LEEyCH3IAX987BjR&_nc_oc=AQlUdMr93DWyEjRYd_K9EdHSqfFLEbej4HCl-6sKLkvJY_AvrJ4ACcjxfVisHaF9aMs&_nc_ht=scontent.fsgn2-6.fna&oh=83d4867bc7c155d4abf608fc33a23bb2&oe=6124AC31");
+  background-image: url("../assets/images/register.jpg");
   background-size: cover;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 </style>

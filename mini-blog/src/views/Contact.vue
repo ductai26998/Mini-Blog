@@ -103,7 +103,7 @@
                   </div>
                 </div>
               </div>
-              <div class="row no-gutters mb-5">
+              <div class="row no-gutters mb-5 form-contact">
                 <div class="col-md-7 p-0">
                   <div class="contact-wrap w-100 p-md-5 p-4">
                     <h3 class="mb-4">Contact Us</h3>
@@ -171,7 +171,7 @@
                     </form>
                   </div>
                 </div>
-                <div class="col-md-5 p-0">
+                <div class="col-md-5 p-0 googlemap">
                   <GoogleMap />
                 </div>
               </div>
@@ -307,6 +307,19 @@ export default {
           border: 1px solid #588da8;
           color: #fff !important;
           padding: 6px 12px;
+        }
+      }
+    }
+  }
+  .form-contact {
+    padding: 0px 30px;
+    .googlemap {
+      background: red;
+      div { 
+        height: 100%;
+        background: pink;
+        .vue-map-container {
+          display: none!important;
         }
       }
     }

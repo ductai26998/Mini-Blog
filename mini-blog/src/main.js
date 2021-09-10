@@ -8,6 +8,8 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 import * as VueGoogleMaps from "vue2-google-maps";
 
 import firebase from "firebase";
+import VueCookies from "vue-cookies";
+Vue.use(VueCookies);
 
 Vue.config.productionTip = false;
 Vue.use(BootstrapVue);

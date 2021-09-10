@@ -14,7 +14,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.secret-inner {
-}
-</style>
+<style lang="scss" scoped></style>

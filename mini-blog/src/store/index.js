@@ -9,17 +9,23 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     loggedIn: false,
-    layoutState: "default"
+    layoutState: "default",
+    user: null,
   },
   mutations: {
+    setUser(state, user) {
+      state.user = user;
+    },
+    setLoggedIn(state) {
+      state.loggedIn = true;
+    },
     changeState(state) {
       firebase.auth().onAuthStateChanged((user) => {
         state.loggedIn = !!user;
       });
     },
-    logout() {
-      firebase.auth().signOut();
-      this.$router.push("auth/login");
+    updateStateLayout(state, payload) {
+      return (state.layoutState = payload);
     },
   },
   actions: {},
