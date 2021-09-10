@@ -52,16 +52,21 @@
                   />
                   <div class="show-infor">
                     <span class="name">{{ user.fullName }}</span>
-                    <span class="personalPage">Xem trang cá nhân của bạn</span>
+                    <span class="personalPage">Show your profile</span>
                   </div>
+                </li>
+                <hr v-if="user.role == 'admin'" />
+                <li v-if="user.role == 'admin'" class="dashboard">
+                  <i class="fas fa-columns"></i>
+                  <span>Dashboard</span>
                 </li>
                 <hr />
                 <li class="infor d-flex post">
                   <i class="fas fa-info-circle"></i>
                   <div class="show-infor" @click="isAdding = true">
-                    <span class="name">Đăng bài</span>
+                    <span class="name">Post new blog</span>
                     <span class="personalPage"
-                      >Góp phần cải thiện chất lượng Moose</span
+                      >Contributing to improve the quality of Moose</span
                     >
                   </div>
                 </li>
@@ -291,6 +296,22 @@ export default {
       li {
         cursor: pointer;
       }
+      .dashboard {
+        padding: 10px 20px;
+        color: #e4e6eb;
+        text-align: left;
+        // display: flex;
+        i {
+          padding: 10px;
+          border-radius: 50%;
+          background: rgb(68, 68, 68);
+        }
+        span {
+          margin-left: 10px;
+          font-size: 1.0625rem;
+          font-weight: 600;
+        }
+      }
     }
     .showControl {
       padding: 8px 16px;
@@ -318,7 +339,7 @@ export default {
           padding: 10px 20px;
           background: #171819;
           justify-content: center;
-          align-items: flex-start;
+          align-items: center;
           img {
             width: 60px;
             object-fit: contain;
@@ -336,7 +357,7 @@ export default {
               line-height: 1.1765;
             }
             .personalPage {
-              font-size: 0.9375rem;
+              font-size: 0.7375rem;
               font-weight: 400;
               line-height: 1.3333;
               color: #b0b3b8;
