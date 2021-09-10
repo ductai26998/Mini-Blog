@@ -1,6 +1,7 @@
 $font-1: "Pacifico", cursive;
 $font-2: serif, cursive;
-
+$font-facebook: serif, cursive;
+$font-cover: "";
 @mixin triangle($size, $color) {
     width: 0;
     height: 0;
