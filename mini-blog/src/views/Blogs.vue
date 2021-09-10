@@ -17,9 +17,9 @@
         v-for="blog in blogs"
         :key="blog.id"
       >
-        <a href="#">
+        <router-link :to="'/blogs/' + blog.id">
           <div :id="blog.id" class="blog-item__img"></div>
-        </a>
+        </router-link>
         <div class="blog-item__info">
           <p class="blog-item__info-1">
             <a href="#" class="date">
