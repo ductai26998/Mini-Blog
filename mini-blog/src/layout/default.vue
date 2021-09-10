@@ -1,7 +1,9 @@
 <template>
   <div class="default-inner">
-    <Navbar v-if="!loggedIn" />
-    <NavbarSecret v-if="loggedIn" />
+    <!-- <Navbar v-if="!loggedIn" />
+    <NavbarSecret v-if="loggedIn" /> -->
+    <Navbar v-if="1<0"/>
+    <NavbarSecret v-else />
     <slot />
     <Subcribe />
     <Footer />
