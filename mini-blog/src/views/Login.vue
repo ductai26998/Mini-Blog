@@ -111,6 +111,7 @@ export default {
 
     @media screen and (max-width: 898px) {
       justify-content: center;
+      padding: 0;
       .login-container__left {
         display: none;
       }
