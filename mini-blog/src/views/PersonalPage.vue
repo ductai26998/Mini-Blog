@@ -2,6 +2,7 @@
   <div class="personal-container">
     <div class="ava-container">
       <div class="ava-cover">
+        <img src="../assets/images/anhbia.jpg" class="cover-img" alt="" />
         <div class="ava-img">
           <img
             src="https://preview.colorlib.com/theme/onlineedu/assets/img/gallery/xteam3.png.pagespeed.ic.ZjKltUw-pd.webp"
@@ -13,16 +14,49 @@
       <hr style="width: 60vw" class="m-auto" />
       <div class="manager">
         <ul class="manage-info">
-          <li class="info active"><p>Bài viết</p></li>
-          <li class="info"><p>Thông tin cá nhân</p></li>
+          <li
+            class="info"
+            v-on:click="setActive('blog')"
+            :class="{ active: isActive('blog') }"
+          >
+            <p>Bài viết</p>
+          </li>
+          <li
+            class="info"
+            v-on:click="setActive('info')"
+            :class="{ active: isActive('info') }"
+          >
+            <p>Thông tin cá nhân</p>
+          </li>
         </ul>
       </div>
     </div>
+    <!-- <my-blog /> -->
+    <my-infor/>
   </div>
 </template>
 <script>
+// import MyBlog from "./MyBlog.vue";
+import MyInfor from "./MyInfor.vue";
 export default {
   name: "About",
+  components: {
+    // MyBlog,
+    MyInfor,
+  },
+  data() {
+    return {
+      activeItem: "about",
+    };
+  },
+  methods: {
+    isActive: function (menuItem) {
+      return this.activeItem === menuItem;
+    },
+    setActive: function (menuItem) {
+      this.activeItem = menuItem; // no need for Vue.set()
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -35,26 +69,33 @@ export default {
   background-color: #18191a;
 }
 @mixin font-facebook {
-  color: #e4e6eb;
+  color: #1c1e21;
   line-height: 1.1875;
   text-align: center;
-  background: #242526;
+  background: #fff;
 }
 .personal-container {
-  width: 100vw;
+  width: 100%;
   .ava-container {
     width: 100%;
-    height: 70vh;
     @include font-facebook();
     .ava-cover {
       padding-top: 20%;
       @include font-cover();
-      width: 60vw;
+      width: 100%;
       height: 20px;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
       margin: auto;
       position: relative;
+      .cover-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
       .ava-img {
         position: absolute;
         bottom: -20px;
@@ -88,6 +129,8 @@ export default {
           min-height: 16px;
           font-size: 14px;
           text-align: center;
+          cursor: pointer;
+          margin-right: 10px;
         }
         li.active {
           color: #2292ef;

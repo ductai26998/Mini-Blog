@@ -76,7 +76,11 @@
                   />
                   <div class="show-infor">
                     <span class="name">{{ user.fullName }}</span>
-                    <span class="personalPage">Show your profile</span>
+                    <span class="personalPage"
+                      ><router-link to="/personal/1"
+                        >Show your profile</router-link
+                      ></span
+                    >
                   </div>
                 </li>
                 <hr v-if="user.role == 'admin'" />
@@ -87,7 +91,7 @@
                 <hr />
                 <li class="infor d-flex post">
                   <i class="fas fa-info-circle"></i>
-                  <div class="show-infor" @click="isAdding = true">
+                  <div class="show-infor" @click="addNew">
                     <span class="name">Post new blog</span>
                     <span class="personalPage"
                       >Contributing to improve the quality of Moose</span
@@ -107,122 +111,55 @@
         </ul>
       </div>
     </div>
-    <div
-      class="createArticle"
-      :style="isAdding ? 'display: block' : 'display: none'"
-    >
-      <div class="content">
-        <span class="contentAddNew">Tạo bài viết</span>
-        <div class="close" @click="isAdding = false">
-          <i class="fas fa-times"></i>
-        </div>
+
+    <transition name="fade" appear>
+      <div class="modal-overlay" v-if="showModal"></div>
+    </transition>
+    <transition name="slide" appear>
+      <div class="modal" v-if="showModal">
+        <button class="btn-close" @click="showModal = false"></button>
+        <PostBlog />
       </div>
-      <hr />
-      <div class="content person d-flex">
-        <img
-          src="https://preview.colorlib.com/theme/onlineedu/assets/img/gallery/xteam3.png.pagespeed.ic.ZjKltUw-pd.webp"
-          alt=""
-        />
-        <span>Trương Thị Mỹ Duyên</span>
-      </div>
-      <div class="articleText">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Username"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-        />
-      </div>
-      <hr />
-      <button type="button" class="btn btn-primary">Primary</button>
-    </div>
+    </transition>
   </nav>
 </template>
 
 <script>
 import firebase from "firebase";
 import "firebase/auth";
+import PostBlog from "../views/PostBlog.vue";
 import { mapState } from "vuex";
 
 export default {
   name: "Navbar",
+  components: { PostBlog },
   data() {
     return {
       choice: false,
       btnControlVisible: false,
       isAdding: false,
+      showModal: false,
     };
   },
-  computed: mapState({ user: (state) => state.user, currentPage: (state) => state.currentPage }),
+  computed: mapState({
+    user: (state) => state.user,
+    currentPage: (state) => state.currentPage,
+  }),
   methods: {
     logout() {
       firebase.auth().signOut();
       this.$cookies.remove("userId");
       this.$router.replace({ path: "auth/login" });
     },
+    addNew() {
+      this.showModal = true;
+      this.btnControlVisible = false;
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.createArticle {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 30vw;
-  transform: translate(-50%, -50%);
-  background: #2f3031;
-  padding: 10px;
-  border-radius: 5px;
-  color: #e4e6eb;
-  hr {
-    margin: 0px;
-  }
-  .content {
-    padding: 12px;
-    position: relative;
-    .contentAddNew {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-    .close {
-      position: absolute;
-      top: 15%;
-      right: 5%;
-      padding: 5px 12px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.1);
-    }
-  }
-  .person {
-    align-items: center;
-    img {
-      width: 40px;
-      border-radius: 50%;
-    }
-    span {
-      margin-left: 10px;
-    }
-  }
-  .articleText {
-    height: 30vh;
-    input {
-      border: none;
-      background: transparent;
-    }
-    input:focus {
-      box-shadow: none !important;
-      color: #e4e6eb;
-    }
-  }
-  button {
-    width: 100%;
-  }
-  button:focus {
-    box-shadow: none !important;
-  }
-}
 .navbar .container {
   width: 800px;
 }
@@ -256,8 +193,6 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
-
-
 
 .nav-item {
   font-size: 15px;
@@ -385,6 +320,12 @@ export default {
               font-weight: 400;
               line-height: 1.3333;
               color: #b0b3b8;
+              a {
+                background-color: transparent;
+                color: inherit !important;
+                text-decoration: none;
+                padding: 0px;
+              }
             }
           }
         }
@@ -409,5 +350,57 @@ export default {
       }
     }
   }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 98;
+  background-color: rgba(0, 0, 0, 0.527);
+}
+
+.modal {
+  position: fixed;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+  height: 90%;
+
+  width: 100%;
+  max-width: 700px;
+  background-color: #fff;
+  border-radius: 16px;
+
+  padding: 25px;
+
+  .btn-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: transform 0.5s;
+}
+
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(-50%) translateX(100vw);
 }
 </style>

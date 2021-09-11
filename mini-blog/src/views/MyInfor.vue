@@ -1,0 +1,299 @@
+<template>
+  <div class="myinfor-container container">
+    <div class="profile-tab m-auto">
+      <div class="d-flex flex-column flex-md-row text-center user-infor">
+        <div class="user-img">
+          <img
+            src="https://scontent.fsgn2-3.fna.fbcdn.net/v/t39.30808-6/240598799_2065676716920804_983197486661330469_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=b9115d&_nc_ohc=9HA4Ldsqz2wAX_A-8Rf&_nc_ht=scontent.fsgn2-3.fna&oh=d45bec77f7a0c64ae4c2520afd01680d&oe=6140E9AB"
+            alt=""
+          />
+        </div>
+        <div class="flex-fill">
+          <h5 class="mb-3">Adek Kembar</h5>
+          <button class="btn btn-primary me-2">Change Avatar</button>
+          <button class="btn btn-primary me-2">Change Password</button>
+          <button
+            class="btn btn-outline-danger btn-icon"
+            data-bs-toggle="tooltip"
+            title=""
+            data-bs-original-title="Remove Avatar"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <p class="small text-muted mt-3">
+            For best results, use an image at least 256px by 256px in either
+            .jpg or .png format
+          </p>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h6 class="card-title mb-4">Basic Information</h6>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Username</label>
+                <input type="text" class="form-control" value="myduyen" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="text" class="form-control" value="duyen123@gmail.com" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Date of Birth</label>
+                <div class="d-flex gap-3">
+                  <select class="form-select">
+                    <option>Day</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option selected="">20</option>
+                    <option>21</option>
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                  </select>
+                  <select class="form-select">
+                    <option>Month</option>
+                    <option selected="">Jan</option>
+                    <option>Feb</option>
+                    <option>Mar</option>
+                    <option>Apr</option>
+                    <option>May</option>
+                    <option>Jun</option>
+                    <option>Jul</option>
+                    <option>Aug</option>
+                    <option>Sep</option>
+                    <option>Oct</option>
+                    <option>Nov</option>
+                    <option>Dec</option>
+                  </select>
+                  <select class="form-select">
+                    <option>Year</option>
+                    <option>2018</option>
+                    <option>2017</option>
+                    <option>2016</option>
+                    <option>2015</option>
+                    <option>2014</option>
+                    <option>2013</option>
+                    <option>2012</option>
+                    <option>2011</option>
+                    <option>2010</option>
+                    <option>2009</option>
+                    <option>2008</option>
+                    <option>2007</option>
+                    <option>2006</option>
+                    <option>2005</option>
+                    <option>2004</option>
+                    <option>2003</option>
+                    <option>2002</option>
+                    <option>2001</option>
+                    <option>2000</option>
+                    <option>1999</option>
+                    <option>1998</option>
+                    <option>1997</option>
+                    <option>1996</option>
+                    <option>1995</option>
+                    <option>1994</option>
+                    <option>1993</option>
+                    <option>1992</option>
+                    <option>1991</option>
+                    <option>1990</option>
+                    <option selected="">1989</option>
+                    <option>1988</option>
+                    <option>1987</option>
+                    <option>1986</option>
+                    <option>1985</option>
+                    <option>1984</option>
+                    <option>1983</option>
+                    <option>1982</option>
+                    <option>1981</option>
+                    <option>1980</option>
+                  </select>
+                </div>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Gender</label>
+                <div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      type="radio"
+                      id="inlineRadio1"
+                      name="inlineRadio"
+                      class="form-check-input"
+                      checked="true"
+                    />
+                    <label class="form-check-label" for="inlineRadio1"
+                      >Male</label
+                    >
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      type="radio"
+                      id="inlineRadio2"
+                      name="inlineRadio"
+                      class="form-check-input"
+                    />
+                    <label class="form-check-label" for="inlineRadio2"
+                      >Female</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Full name</label>
+                <input type="text" class="form-control" value="Trương Thị Mỹ Duyên" />
+              </div>
+               <div class="mb-3">
+                <label class="form-label">Role</label>
+                <select class="form-select">
+                  <option value="">Admin</option>
+                  <option value="" selected="">User</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Department</label>
+                <select class="form-select">
+                  <option value="">All</option>
+                  <option value="">Sales</option>
+                  <option value="" selected="">Development</option>
+                  <option value="">Management</option>
+                </select>
+              </div>
+            </div>
+          </div>
+           <button class="btn btn-primary me-2">Change</button>
+        </div>
+      </div>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h6 class="card-title mb-4">Contact</h6>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Phone</label>
+                <input type="text" class="form-control" value="+65195892151" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Website</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  value="http://laborasyon.com/"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label class="form-label">Address</label>
+                <input type="text" class="form-control" value="Lien Chieu Distrist" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" value="Da Nang" />
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary me-2">Change</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <h6 class="card-title mb-4">Social</h6>
+          <form>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Twitter</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="https://twitter.com/roxana-roussell"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Facebook</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="https://www.facebook.com/roxana-roussell"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  <label class="form-label">Instagram</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="https://www.instagram.com/roxana-roussell/"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">GitHub</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="https://github.com/roxana-roussell"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+          <button class="btn btn-primary me-2">Change</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="scss">
+.myinfor-container {
+  width: 100%;
+  padding: 5vh 0;
+  .profile-tab {
+    width: 72%;
+    .user-infor {
+      .user-img {
+        img {
+          width: 120px;
+          border-radius: 50%;
+          object-fit: contain;
+        }
+      }
+      .flex-fill {
+        text-align: left;
+        padding-left: 2rem;
+      }
+    }
+  }
+}
+</style>
