@@ -26,7 +26,7 @@
               ></span>
               <span data-v-df212a54=""
                 ><a data-v-df212a54="" href="/" class="router-link-active"
-                  >BlogDetail
+                  >{{ blog.id }}
                   <i data-v-df212a54="" class="fa fa-chevron-right"></i></a
               ></span>
             </p>
@@ -40,7 +40,8 @@
           <div class="col-12 col-md-6">
             <div class="blog-img">
               <img
-                src="https://preview.colorlib.com/theme/moose/images/ximage_1.jpg.pagespeed.ic.c7t3nRa1R3.webp"
+                id="img-blog"
+                :src="blog.imgUrl"
                 alt=""
               />
             </div>
@@ -48,24 +49,21 @@
           <div class="col-12 col-md-6">
             <div class="blog-info p-md-5 py-5 px-4 text-start">
               <p class="meta">
-                <router-link to="/">
+                <router-link class="meta_subinfo" to="/">
                   <i data-v-e28aca72="" class="far fa-calendar-alt"></i>
-                  Sept. 27, 2020
+                  {{ blog.release_date }}
                 </router-link>
-                <router-link to="/"
+                <router-link class="meta_subinfo" to="/"
                   ><i data-v-e28aca72="" class="fas fa-user"></i
                   ><span data-v-e28aca72="">ADMIN</span></router-link
                 >
-                <router-link to="/"
+                <router-link class="meta_subinfo" to="/"
                   ><i data-v-e28aca72="" class="fas fa-comment"></i
                   ><span data-v-e28aca72="">3</span></router-link
                 >
               </p>
               <h2 class="mb-4">
-                <router-link to="/"
-                  >Turning a digital brand into a real world
-                  experience</router-link
-                >
+                <router-link to="/">{{ blog.title }}</router-link>
               </h2>
               <div class="icon d-flex align-items-center">
                 <div class="img-author">
@@ -85,61 +83,8 @@
         <div class="row text-blog justify-content-center align-items-center">
           <div class="col-md-7 text-start">
             <div class="py-4">
-              <p>
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts. Separated
-                they live in Bookmarksgrove right at the coast of the Semantics,
-                a large language ocean. A small river named Duden flows by their
-                place and supplies it with the necessary regelialia. It is a
-                paradisematic country, in which roasted parts of sentences fly
-                into your mouth.
-              </p>
-              <p>
-                Even the all-powerful Pointing has no control about the blind
-                texts it is an almost unorthographic life One day however a
-                small line of blind text by the name of Lorem Ipsum decided to
-                leave for the far World of Grammar.
-              </p>
-              <p>
-                <strong>On her way she met a copy.</strong> The copy warned the
-                Little Blind Text, that where it came from it would have been
-                rewritten a thousand times and everything that was left from its
-                origin would be the word "and" and the Little Blind Text should
-                turn around and return to its own, safe country. But nothing the
-                copy said could convince her and so it didn’t take long until a
-                few insidious Copy Writers ambushed her, made her drunk with
-                Longe and Parole and dragged her into their agency, where they
-                abused her for their.
-              </p>
-            </div>
-            <div class="py-4">
-              <h3>How It Works</h3>
-              <p>
-                Far far away, behind the word mountains, far from the countries
-                Vokalia and Consonantia, there live the blind texts. Separated
-                they live in Bookmarksgrove right at the coast of the Semantics,
-                a large language ocean. A small river named Duden flows by their
-                place and supplies it with the necessary regelialia. It is a
-                paradisematic country, in which roasted parts of sentences fly
-                into your mouth.
-              </p>
-              <p>
-                Even the all-powerful Pointing has no control about the blind
-                texts it is an almost unorthographic life One day however a
-                small line of blind text by the name of Lorem Ipsum decided to
-                leave for the far World of Grammar.
-              </p>
-              <p>
-                <strong>On her way she met a copy.</strong> The copy warned the
-                Little Blind Text, that where it came from it would have been
-                rewritten a thousand times and everything that was left from its
-                origin would be the word "and" and the Little Blind Text should
-                turn around and return to its own, safe country. But nothing the
-                copy said could convince her and so it didn’t take long until a
-                few insidious Copy Writers ambushed her, made her drunk with
-                Longe and Parole and dragged her into their agency, where they
-                abused her for their.
-              </p>
+              <!-- p: nornal text, strong: strong, h3: subtitle -->
+              {{ blog.content }}
             </div>
             <div class="tag-widget post-tag-container mt-5 mb-5">
               <div class="tagcloud">
@@ -332,7 +277,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["blog"],
+};
 </script>
 
 <style lang="scss" scoped>
@@ -391,6 +338,11 @@ export default {};
           }
         }
       }
+
+      .meta_subinfo {
+        margin-right: 16px;
+      }
+
       h2 {
         font-size: 45px;
         font-weight: 800;
@@ -432,6 +384,7 @@ export default {};
   }
   .text-blog {
     .py-4 {
+      text-align: justify;
       h3 {
         font-weight: 700;
       }

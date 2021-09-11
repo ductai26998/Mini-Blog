@@ -32,9 +32,10 @@ const routes = [
     component: () => import("../views/Blogs.vue"),
   },
   {
-    path: "/blogs/:id",
+    path: "/blogDetail",
     name: "blogDetail",
     component: () => import("../views/BlogDetail.vue"),
+    props: true,
   },
   {
     path: "/auth/login",
