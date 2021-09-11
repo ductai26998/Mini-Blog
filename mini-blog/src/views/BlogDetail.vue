@@ -20,12 +20,12 @@
                     class="fa fa-chevron-right"
                   ></i></a></span
               ><span data-v-df212a54=""
-                ><a data-v-df212a54="" href="/" class="router-link-active"
+                ><a data-v-df212a54="" href="/blogs" class="router-link-active"
                   >Blog
                   <i data-v-df212a54="" class="fa fa-chevron-right"></i></a
               ></span>
               <span data-v-df212a54=""
-                ><a data-v-df212a54="" href="/" class="router-link-active"
+                ><a data-v-df212a54="" href="#" class="router-link-active"
                   >{{ blog.id }}
                   <i data-v-df212a54="" class="fa fa-chevron-right"></i></a
               ></span>
@@ -39,11 +39,7 @@
         <div class="row intro-blog">
           <div class="col-12 col-md-6">
             <div class="blog-img">
-              <img
-                id="img-blog"
-                :src="blog.imgUrl"
-                alt=""
-              />
+              <img id="img-blog" :src="blog.imgUrl" alt="" />
             </div>
           </div>
           <div class="col-12 col-md-6">
@@ -277,8 +273,60 @@
 </template>
 
 <script>
+import firebase from "firebase";
+import { app } from "../main";
+
 export default {
-  props: ["blog"],
+  // props: ["blog"],
+  data() {
+    return {
+      blog: {
+        id: null,
+        content: null,
+        release_date: null,
+        title: null,
+      },
+    };
+  },
+  methods: {
+    async getImageUrl(id) {
+      // Ref to firebase storage
+      const imgRef = firebase.storage().ref();
+
+      await imgRef
+        .child("images/blogs/" + id + ".png")
+        .getDownloadURL()
+        .then((url) => {
+          let imgElement = document.getElementById("img-blog");
+          imgElement.style.backgroundImage = `url(${url})`;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+  async created() {
+    let db = firebase.firestore(app);
+    var blogId = this.$attrs.id;
+
+    await db
+      .collection("blogs")
+      .where("id", "==", blogId)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          //  Set cookies
+          this.blog = doc.data();
+          let date = new Date(doc.data().release_date.seconds * 1000);
+          this.blog.release_date =
+            date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+        });
+        this.getImageUrl(blogId);
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  },
 };
 </script>
 

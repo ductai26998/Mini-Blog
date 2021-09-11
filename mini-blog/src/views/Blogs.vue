@@ -17,7 +17,7 @@
         v-for="blog in blogs"
         :key="blog.id"
       >
-        <router-link :to="{ name: 'blogDetail', params: { blog } }">
+        <router-link :to="{ path: 'blogs/' + blog.id }">
           <div :id="blog.id" class="blog-item__img"></div>
         </router-link>
         <div class="blog-item__info">
@@ -82,6 +82,7 @@ export default {
               date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),
             title: doc.data().title,
           };
+          this.getImageUrl(doc.data().id);
           this.blogs.push(blogInfo);
         });
 
@@ -90,12 +91,12 @@ export default {
           return secondEl.id - firstEl.id;
         });
 
-        this.blogs.forEach(async (blog) => {
-          let imgUrl = await this.getImageUrl(blog.id);
-          var imgElement = document.getElementById(blog.id);
-          imgElement.style.backgroundImage = `url(${imgUrl})`;
-          blog.imgUrl = imgUrl;
-        })
+        // this.blogs.forEach(async (blog) => {
+        //   let imgUrl = await this.getImageUrl(blog.id);
+        //   var imgElement = document.getElementById(blog.id);
+        //   imgElement.style.backgroundImage = `url(${imgUrl})`;
+        //   blog.imgUrl = imgUrl;
+        // })
 
       } catch (err) {
         alert(err);
@@ -104,19 +105,19 @@ export default {
     async getImageUrl(id) {
       // Ref to firebase storage
       const imgRef = firebase.storage().ref();
-      var imgUrl = null;
 
       await imgRef
         .child("images/blogs/" + id + ".png")
         .getDownloadURL()
         .then((url) => {
-          imgUrl = url;
+          let imgElement = document.getElementById(id);
+          imgElement.style.backgroundImage = `url(${url})`;
         })
         .catch((error) => {
           console.log(error);
         });
 
-      return imgUrl;
+      // return imgUrl;
     },
   },
   created() {
