@@ -167,7 +167,6 @@ export default {
     },
     onClose() {
       this.btnControlVisible = false;
-      console.log("close");
     },
     addNew() {
       this.showModal = true;

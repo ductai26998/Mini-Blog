@@ -18,7 +18,7 @@
         :key="blog.id"
         @click="$router.push('/blogs/' + blog.id)"
       >
-        <a href="">
+        <a href="/blogs/1">
           <div :id="blog.id" class="blog-item__img"></div>
         </a>
         <div class="blog-item__info">

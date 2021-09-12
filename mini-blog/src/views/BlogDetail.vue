@@ -332,7 +332,77 @@
 </template>
 
 <script>
-export default {};
+import firebase from "firebase/app";
+import "firebase/storage";
+import { app } from "../main";
+export default {
+  data() {
+    return {
+      blogInfor: [],
+      blogID: "",
+    };
+  },
+  methods: {
+    async getBlogDetail() {
+      console.log("hihihiihihih");
+      try {
+        let db = await firebase.firestore(app);
+        const blogsRef = db.collection("blogs");
+        const snapshot = await blogsRef.get();
+        if (snapshot.empty) {
+          console.log("No matching documents.");
+          return;
+        }
+        snapshot.forEach((doc) => {
+          if (doc.id === this.$route.params.id) {
+            var date = new Date(doc.data().release_date.seconds * 1000);
+            this.blogInfor = {
+              id: doc.data().id,
+              content: doc.data().content,
+              release_date:
+                date.getDay() +
+                "/" +
+                date.getMonth() +
+                "/" +
+                date.getFullYear(),
+              title: doc.data().title,
+            };
+            this.getImage(doc.data().id);
+            console.log(this.blogInfor.title);
+          }
+        });
+      } catch (error) {
+        console.log("Error: " + error);
+      }
+    },
+    getImage(id) {
+      // Ref to firebase storage
+      const imgRef = firebase.storage().ref();
+
+      imgRef
+        .child("images/blogs/" + id + ".png")
+        .getDownloadURL()
+        .then((url) => {
+          // `url` is the download URL for 'images/<imageName>.png'
+
+          // This can be downloaded directly:
+          var xhr = new XMLHttpRequest();
+          xhr.responseType = "blob";
+          xhr.open("GET", url);
+          xhr.send();
+
+          // Or inserted into an <img> element
+          var imgBlog = document.getElementById(id);
+          imgBlog.style.backgroundImage = `url(${url})`;
+          // img.setAttribute("src", url);
+        });
+    },
+  },
+  created() {
+    this.blogID = this.$route.params.id;
+    this.getBlogDetail();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
