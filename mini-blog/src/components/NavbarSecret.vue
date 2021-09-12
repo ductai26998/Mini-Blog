@@ -60,16 +60,21 @@
           <li class="manager-user">
             <div
               class="showControl"
-              @click="btnControlVisible = !btnControlVisible"
+              ref="btnShow"
+              @click="btnControlVisible = true"
             >
               <i class="fas fa-sort-down"></i>
             </div>
             <div
               class="manager-show"
               :style="btnControlVisible ? 'display: block' : 'display: none'"
+              v-closable="{
+                exclude: ['btnShow'],
+                handler: 'onClose',
+              }"
             >
               <ul class="manager" style="padding-left: 0px">
-                <li class="infor d-flex">
+                <li class="infor d-flex" @click="btnControlVisible = false">
                   <img
                     src="https://preview.colorlib.com/theme/onlineedu/assets/img/gallery/xteam3.png.pagespeed.ic.ZjKltUw-pd.webp"
                     alt=""
@@ -84,12 +89,21 @@
                   </div>
                 </li>
                 <hr v-if="user.role == 'admin'" />
-                <li v-if="user.role == 'admin'" class="dashboard">
-                  <i class="fas fa-columns"></i>
-                  <span>Dashboard</span>
+                <li
+                  v-if="user.role == 'admin'"
+                  class="dashboard infor"
+                  @click="btnControlVisible = false"
+                >
+                  <i class="fas fa-cog"></i>
+                  <span class="personalPage"
+                    ><router-link to="/dashboard">Dashboard</router-link></span
+                  >
                 </li>
                 <hr />
-                <li class="infor d-flex post">
+                <li
+                  class="infor d-flex post"
+                  @click="btnControlVisible = false"
+                >
                   <i class="fas fa-info-circle"></i>
                   <div class="show-infor" @click="addNew">
                     <span class="name">Post new blog</span>
@@ -150,6 +164,10 @@ export default {
       firebase.auth().signOut();
       this.$cookies.remove("userId");
       this.$router.replace({ path: "auth/login" });
+    },
+    onClose() {
+      this.btnControlVisible = false;
+      console.log("close");
     },
     addNew() {
       this.showModal = true;
@@ -269,6 +287,11 @@ export default {
           margin-left: 10px;
           font-size: 1.0625rem;
           font-weight: 600;
+          a {
+            text-decoration: none;
+            color: inherit;
+            background: transparent;
+          }
         }
       }
     }
@@ -293,11 +316,12 @@ export default {
       right: 50%;
       width: 300px;
       display: none;
+      z-index: 10;
       .manager {
         .infor {
           padding: 10px 20px;
           background: #171819;
-          justify-content: center;
+          justify-content: left;
           align-items: center;
           img {
             width: 60px;
@@ -328,8 +352,6 @@ export default {
               }
             }
           }
-        }
-        .post {
           i {
             color: #fff;
             background: rgb(68, 68, 68);

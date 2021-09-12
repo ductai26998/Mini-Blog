@@ -1,6 +1,6 @@
 <template>
   <div class="myblog-container">
-    <div class="container">
+    <div class="container" style="width: 65%">
       <div class="row justify-content-center mb-5">
         <div class="col-md-7 heading-section text-center">
           <span class="subheading">My Blog</span>
@@ -30,10 +30,9 @@
                 </p>
               </div>
             </router-link>
-            
           </div>
         </div>
-         <div class="col-md-6 d-flex">
+        <div class="col-md-6 d-flex">
           <div class="blog-entry justify-content-end">
             <router-link to="/">
               <img src="../assets/images/ava.jpg" alt="" />
@@ -55,10 +54,9 @@
                 </p>
               </div>
             </router-link>
-            
           </div>
         </div>
-         <div class="col-md-6 d-flex">
+        <div class="col-md-6 d-flex">
           <div class="blog-entry justify-content-end">
             <router-link to="/">
               <img src="../assets/images/ava.jpg" alt="" />
@@ -80,10 +78,9 @@
                 </p>
               </div>
             </router-link>
-            
           </div>
         </div>
-         <div class="col-md-6 d-flex">
+        <div class="col-md-6 d-flex">
           <div class="blog-entry justify-content-end">
             <router-link to="/">
               <img src="../assets/images/ava.jpg" alt="" />
@@ -105,7 +102,6 @@
                 </p>
               </div>
             </router-link>
-            
           </div>
         </div>
       </div>
@@ -119,7 +115,7 @@ export default {};
 
 <style lang="scss" scoped>
 .myblog-container {
-    width: 100%;
+  width: 100%;
 }
 .heading-section {
   .subheading {
@@ -137,13 +133,13 @@ export default {};
   }
 }
 .blog-entry {
-    background: #e7e7e7;
-    margin-bottom: 30px;
+  background: #e7e7e7;
+  margin-bottom: 30px;
   a {
     text-decoration: none;
     img {
-        width: 100%;
-        object-fit: contain;
+      width: 100%;
+      object-fit: contain;
     }
     .text {
       width: 100%;

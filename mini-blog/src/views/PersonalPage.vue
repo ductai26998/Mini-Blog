@@ -16,15 +16,15 @@
         <ul class="manage-info">
           <li
             class="info"
-            v-on:click="setActive('blog')"
-            :class="{ active: isActive('blog') }"
+            v-on:click="setActive('MyBlog')"
+            :class="{ active: isActive('MyBlog') }"
           >
             <p>Bài viết</p>
           </li>
           <li
             class="info"
-            v-on:click="setActive('info')"
-            :class="{ active: isActive('info') }"
+            v-on:click="setActive('MyInfor')"
+            :class="{ active: isActive('MyInfor') }"
           >
             <p>Thông tin cá nhân</p>
           </li>
@@ -32,21 +32,21 @@
       </div>
     </div>
     <!-- <my-blog /> -->
-    <my-infor/>
+    <component :is="theSelectComponent"></component>
   </div>
 </template>
 <script>
-// import MyBlog from "./MyBlog.vue";
 import MyInfor from "./MyInfor.vue";
+import MyBlog from "./MyBlog.vue";
 export default {
-  name: "About",
   components: {
-    // MyBlog,
     MyInfor,
+    MyBlog,
   },
   data() {
     return {
-      activeItem: "about",
+      activeItem: "MyBlog",
+      theSelectComponent: "MyBlog",
     };
   },
   methods: {
@@ -55,6 +55,7 @@ export default {
     },
     setActive: function (menuItem) {
       this.activeItem = menuItem; // no need for Vue.set()
+      this.theSelectComponent = menuItem;
     },
   },
 };

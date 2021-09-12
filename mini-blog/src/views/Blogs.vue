@@ -16,8 +16,9 @@
         class="blog-item col-md-6 col-lg-4"
         v-for="blog in blogs"
         :key="blog.id"
+        @click="$router.push('/blogs/' + blog.id)"
       >
-        <a href="#">
+        <a href="">
           <div :id="blog.id" class="blog-item__img"></div>
         </a>
         <div class="blog-item__info">
@@ -40,7 +41,10 @@
           </h2>
           <div class="blog-item__info__author">
             <div class="author__avatar"></div>
-            <h4 class="author__name">Jamie Jonson</h4>
+            <div class="position pl-3 author__infor">
+              <h4 class="mb-0">Jamie Jonson</h4>
+              <span>CEO, Product Designer</span>
+            </div>
           </div>
         </div>
       </div>
@@ -177,6 +181,7 @@ a {
     width: 100%;
     height: 400px;
     background-image: url(../assets/images/login-cover.jpg);
+    background-size: cover;
   }
   .blog-item__info-1 {
     font-size: 14px;
@@ -210,10 +215,20 @@ a {
       background-image: url(../assets/images/login-cover.jpg);
       cursor: pointer;
     }
-    .author__name {
-      margin: 0 0 0 8px;
-      font-size: 17px;
-      cursor: pointer;
+    .author__infor {
+      padding-left: 1rem!important;
+      h4 {
+        font-size: 16px;
+        color: rgba(0,0,0,0.7);
+        font-weight: 700;
+      }
+      span {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
+        color: #588da8;
+      }
     }
   }
 }
