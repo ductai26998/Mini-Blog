@@ -16,7 +16,7 @@
       </button>
       <div class="collapse navbar-collapse" :class="choice ? 'show' : ''">
         <ul class="navbar-nav ml-auto">
-          <li class="m-1">
+          <li class="m-1 d-flex align-items-center justify-content-center">
             <router-link
               class="nav-item"
               :class="currentPage == 'home' ? 'active' : ''"
@@ -24,7 +24,7 @@
               >Home</router-link
             >
           </li>
-          <li class="m-1">
+          <li class="m-1 d-flex align-items-center justify-content-center">
             <router-link
               class="nav-item"
               :class="currentPage == 'about' ? 'active' : ''"
@@ -32,7 +32,7 @@
               >About</router-link
             >
           </li>
-          <li class="m-1">
+          <li class="m-1 d-flex align-items-center justify-content-center">
             <router-link
               class="nav-item"
               :class="currentPage == 'contact' ? 'active' : ''"
@@ -40,7 +40,7 @@
               >Contact</router-link
             >
           </li>
-          <li class="m-1">
+          <li class="m-1 d-flex align-items-center justify-content-center">
             <router-link
               class="nav-item"
               :class="currentPage == 'blogs' ? 'active' : ''"
@@ -212,6 +212,7 @@ export default {
 }
 
 .nav-item {
+  display: flex;
   font-size: 15px;
   padding: 0 20px;
   color: #000000;

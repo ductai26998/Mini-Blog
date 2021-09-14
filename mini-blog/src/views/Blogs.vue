@@ -18,9 +18,9 @@
         :key="blog.id"
         @click="$router.push('/blogs/' + blog.id)"
       >
-        <a href="/blogs/1">
+        <router-link :to="{ path: 'blogs/' + blog.id }">
           <div :id="blog.id" class="blog-item__img"></div>
-        </a>
+        </router-link>
         <div class="blog-item__info">
           <p class="blog-item__info-1">
             <a href="#" class="date">
@@ -86,42 +86,41 @@ export default {
               date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),
             title: doc.data().title,
           };
+          this.getImageUrl(doc.data().id);
           this.blogs.push(blogInfo);
-          this.getImage(doc.data().id);
         });
 
         // sort all blog from nearest
-        this.blogs = this.blogs.sort((firstEl, secondEl) => {
+        this.blogs.sort((firstEl, secondEl) => {
           return secondEl.id - firstEl.id;
         });
+
+        // this.blogs.forEach(async (blog) => {
+        //   let imgUrl = await this.getImageUrl(blog.id);
+        //   var imgElement = document.getElementById(blog.id);
+        //   imgElement.style.backgroundImage = `url(${imgUrl})`;
+        //   blog.imgUrl = imgUrl;
+        // })
       } catch (err) {
         alert(err);
       }
     },
-    getImage(id) {
+    async getImageUrl(id) {
       // Ref to firebase storage
       const imgRef = firebase.storage().ref();
 
-      imgRef
+      await imgRef
         .child("images/blogs/" + id + ".png")
         .getDownloadURL()
         .then((url) => {
-          // `url` is the download URL for 'images/<imageName>.png'
-
-          // This can be downloaded directly:
-          var xhr = new XMLHttpRequest();
-          xhr.responseType = "blob";
-          xhr.open("GET", url);
-          xhr.send();
-
-          // Or inserted into an <img> element
-          var imgBlog = document.getElementById(id);
-          imgBlog.style.backgroundImage = `url(${url})`;
-          // img.setAttribute("src", url);
+          let imgElement = document.getElementById(id);
+          imgElement.style.backgroundImage = `url(${url})`;
         })
         .catch((error) => {
           console.log(error);
         });
+
+      // return imgUrl;
     },
   },
   created() {
@@ -216,10 +215,10 @@ a {
       cursor: pointer;
     }
     .author__infor {
-      padding-left: 1rem!important;
+      padding-left: 1rem !important;
       h4 {
         font-size: 16px;
-        color: rgba(0,0,0,0.7);
+        color: rgba(0, 0, 0, 0.7);
         font-weight: 700;
       }
       span {
