@@ -75,17 +75,19 @@
             >
               <ul class="manager" style="padding-left: 0px">
                 <li class="infor d-flex" @click="btnControlVisible = false">
+                  <div class="d-flex">
                   <img
-                    src="https://preview.colorlib.com/theme/onlineedu/assets/img/gallery/xteam3.png.pagespeed.ic.ZjKltUw-pd.webp"
+                    src="https://scontent.fhan14-2.fna.fbcdn.net/v/t39.30808-6/240535669_1028171487750269_960018394092411926_n.jpg?_nc_cat=109&ccb=1-5&_nc_sid=8bfeb9&_nc_ohc=C5wjL66SsUsAX9CIBIn&_nc_ht=scontent.fhan14-2.fna&oh=74853d8f1de042cffa340d901cfa3db6&oe=6155E38A"
                     alt=""
                   />
                   <div class="show-infor">
+                    <div  to="" @click="$router.push('/personal/' + user.id)" class="text-decoration-none bg-transparent d-flex flex-column">
                     <span class="name">{{ user.fullName }}</span>
                     <span class="personalPage"
-                      ><router-link to="/personal/1"
-                        >Show your profile</router-link
-                      ></span
+                      >Show your profile</span
                     >
+                    </div>
+                  </div>
                   </div>
                 </li>
                 <hr v-if="user.role == 'admin'" />
@@ -325,7 +327,8 @@ export default {
           align-items: center;
           img {
             width: 60px;
-            object-fit: contain;
+            height: 60px;
+            object-fit: cover;
             border-radius: 50%;
           }
           .show-infor {

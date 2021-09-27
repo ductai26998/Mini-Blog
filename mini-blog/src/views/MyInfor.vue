@@ -9,7 +9,7 @@
           />
         </div>
         <div class="flex-fill">
-          <h5 class="mb-3">Adek Kembar</h5>
+          <h5 class="mb-3">{{ userInfo.fullName }}</h5>
           <button class="btn btn-primary me-2">Change Avatar</button>
           <button class="btn btn-primary me-2">Change Password</button>
           <button
@@ -33,11 +33,19 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="form-label">Username</label>
-                <input type="text" class="form-control" value="myduyen" />
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="userInfo.username"
+                />
               </div>
               <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input type="text" class="form-control" value="duyen123@gmail.com" />
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="userInfo.email"
+                />
               </div>
               <div class="mb-3">
                 <label class="form-label">Date of Birth</label>
@@ -166,13 +174,18 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="form-label">Full name</label>
-                <input type="text" class="form-control" value="Trương Thị Mỹ Duyên" />
+                <input
+                  type="text"
+                  class="form-control"
+                  v-model="userInfo.fullName"
+                />
               </div>
-               <div class="mb-3">
+              <div class="mb-3">
                 <label class="form-label">Role</label>
-                <select class="form-select">
-                  <option value="">Admin</option>
-                  <option value="" selected="">User</option>
+                <select class="form-select" v-model="userInfo.role">
+                  <option v-for="role in roles" :key="role.id" :selected="role.text">
+                    {{ role.text }}
+                  </option>
                 </select>
               </div>
               <div class="mb-3">
@@ -186,7 +199,7 @@
               </div>
             </div>
           </div>
-           <button class="btn btn-primary me-2">Change</button>
+          <button class="btn btn-primary me-2">Change</button>
         </div>
       </div>
       <div class="card mb-4">
@@ -210,7 +223,11 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="form-label">Address</label>
-                <input type="text" class="form-control" value="Lien Chieu Distrist" />
+                <input
+                  type="text"
+                  class="form-control"
+                  value="Lien Chieu Distrist"
+                />
               </div>
               <div class="mb-3">
                 <label class="form-label">City</label>
@@ -272,7 +289,28 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["userInfo"],
+  data() {
+    return {
+      roles: [
+        {
+          id: "role_1",
+          text: "admin",
+        },
+        {
+          id: "role_2",
+          text: "user",
+        },
+      ],
+      userRole: '',
+    };
+  },
+  created() {
+    console.log("user data from parent to component child ");
+    this.userRole = this.userInfo.role
+  },
+};
 </script>
 
 <style lang="scss">

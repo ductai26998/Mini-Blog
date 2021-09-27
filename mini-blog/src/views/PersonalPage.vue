@@ -10,7 +10,7 @@
           />
         </div>
       </div>
-      <div class="person-name">Trương Mỹ Duyên</div>
+      <div class="person-name">{{userInfo.fullName}}</div>
       <hr style="width: 60vw" class="m-auto" />
       <div class="manager">
         <ul class="manage-info">
@@ -32,12 +32,16 @@
       </div>
     </div>
     <!-- <my-blog /> -->
-    <component :is="theSelectComponent"></component>
+    <component :userInfo="userInfo" :is="theSelectComponent"></component>
   </div>
 </template>
 <script>
 import MyInfor from "./MyInfor.vue";
 import MyBlog from "./MyBlog.vue";
+
+import firebase from "firebase";
+import { app } from "../main";
+
 export default {
   components: {
     MyInfor,
@@ -47,6 +51,14 @@ export default {
     return {
       activeItem: "MyBlog",
       theSelectComponent: "MyBlog",
+      userInfo: {
+        id: null,
+        email: null,
+        fullname: null,
+        password: null,
+        role: null,
+        username: null,
+      },
     };
   },
   methods: {
@@ -58,7 +70,24 @@ export default {
       this.theSelectComponent = menuItem;
     },
   },
-};
+  async created() {
+    let db = firebase.firestore(app);
+    var userID = this.$route.params.id;
+
+    await db
+      .collection("users")
+      .where("id", "==", userID)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          this.userInfo = doc.data();
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+  },
+}
 </script>
 <style lang="scss" scoped>
 @import "../assets/scss/style.scss";
