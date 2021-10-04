@@ -212,7 +212,7 @@
                 <input type="text" class="form-control" value="+65195892151" />
               </div>
               <div class="mb-3">
-                <label class="form-label">Website</label>
+                <label class="form-label">Social</label>
                 <input
                   type="text"
                   class="form-control"
@@ -235,52 +235,6 @@
               </div>
             </div>
           </div>
-          <button class="btn btn-primary me-2">Change</button>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <h6 class="card-title mb-4">Social</h6>
-          <form>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label">Twitter</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="https://twitter.com/roxana-roussell"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">Facebook</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="https://www.facebook.com/roxana-roussell"
-                  />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="mb-3">
-                  <label class="form-label">Instagram</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="https://www.instagram.com/roxana-roussell/"
-                  />
-                </div>
-                <div class="mb-3">
-                  <label class="form-label">GitHub</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="https://github.com/roxana-roussell"
-                  />
-                </div>
-              </div>
-            </div>
-          </form>
           <button class="btn btn-primary me-2">Change</button>
         </div>
       </div>
@@ -307,7 +261,7 @@ export default {
     };
   },
   created() {
-    console.log("user data from parent to component child ");
+    console.log("user data from parent to component child");
     this.userRole = this.userInfo.role
   },
 };
