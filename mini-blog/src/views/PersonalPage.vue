@@ -32,7 +32,7 @@
       </div>
     </div>
     <!-- <my-blog /> -->
-    <component :userInfo="userInfo" :is="theSelectComponent"></component>
+    <component :userInfo="userInfo" :is="theSelectComponent" :blogs="blogs"></component>
   </div>
 </template>
 <script>
@@ -59,6 +59,7 @@ export default {
         role: null,
         username: null,
       },
+      blogs: [],
     };
   },
   methods: {
@@ -81,6 +82,28 @@ export default {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           this.userInfo = doc.data();
+        });
+      })
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
+
+    await db
+      .collection("blogs")
+      .where("author_id", "==", userID)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          var date = new Date(doc.data().release_date.seconds * 1000);
+          let blogInfo = {
+            id: doc.data().id,
+            content: doc.data().content,
+            release_date:
+              date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),
+            title: doc.data().title,
+          };
+          // this.getImageUrl(doc.data().id);
+          this.blogs.push(blogInfo);
         });
       })
       .catch((error) => {

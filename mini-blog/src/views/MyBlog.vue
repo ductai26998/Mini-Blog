@@ -8,7 +8,32 @@
         </div>
       </div>
       <div class="row justify-content-center">
-        <div class="col-md-6 d-flex">
+        <div class="col-md-6 d-flex"
+          v-for="blog in blogs" :key="blog.id"
+        >
+          <div class="blog-entry justify-content-end">
+            <router-link to="/">
+              <img src="../assets/images/ava.jpg" alt="" />
+              <div class="text">
+                <p class="meta">
+                  <span><i class="fa fa-calendar me-1"></i>{{blog.release_date}}</span>
+                  <span
+                    ><a href="#"
+                      ><i class="fa fa-comment me-1"></i> 3 Comments</a
+                    ></span
+                  >
+                </p>
+                <h3 class="heading mb-3">
+                  <a href="#">{{blog.title}}</a>
+                </h3>
+                <p>
+                  {{blog.content.slice(0, 100)}}...
+                </p>
+              </div>
+            </router-link>
+          </div>
+        </div>
+        <!-- <div class="col-md-6 d-flex">
           <div class="blog-entry justify-content-end">
             <router-link to="/">
               <img src="../assets/images/ava.jpg" alt="" />
@@ -79,38 +104,16 @@
               </div>
             </router-link>
           </div>
-        </div>
-        <div class="col-md-6 d-flex">
-          <div class="blog-entry justify-content-end">
-            <router-link to="/">
-              <img src="../assets/images/ava.jpg" alt="" />
-              <div class="text">
-                <p class="meta">
-                  <span><i class="fa fa-calendar me-1"></i>Jan. 18, 2021</span>
-                  <span
-                    ><a href="#"
-                      ><i class="fa fa-comment me-1"></i> 3 Comments</a
-                    ></span
-                  >
-                </p>
-                <h3 class="heading mb-3">
-                  <a href="#">Tips About Creating A New Web Design</a>
-                </h3>
-                <p>
-                  A small river named Duden flows by their place and supplies it
-                  with the necessary regelialia.
-                </p>
-              </div>
-            </router-link>
-          </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["blogs"],
+};
 </script>
 
 <style lang="scss" scoped>

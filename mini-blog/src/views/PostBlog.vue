@@ -61,6 +61,7 @@
 import firebase from "firebase/app";
 import "firebase/storage";
 import { app } from "../main";
+import store from "../store";
 
 export default {
   data() {
@@ -93,6 +94,7 @@ export default {
           image_id: id,
           comment_id: [],
           release_date: date,
+          author_id: store.state.user.id,
         };
 
         // Upload info of new blog to Firestore Database
@@ -117,6 +119,9 @@ export default {
         });
 
         alert("The blog was posted.");
+        if (this.$router.name != '/personal/' + store.state.user.id) {
+          this.$router.replace('/personal/' + store.state.user.id);
+        }
       } catch (err) {
         alert(err);
       }
