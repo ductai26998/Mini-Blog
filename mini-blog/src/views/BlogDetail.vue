@@ -51,7 +51,9 @@
                 </router-link>
                 <router-link class="meta_subinfo" to="/"
                   ><i data-v-e28aca72="" class="fas fa-user"></i
-                  ><span data-v-e28aca72="">{{ blog.author }}</span></router-link
+                  ><span data-v-e28aca72="">{{
+                    blog.author
+                  }}</span></router-link
                 >
                 <router-link class="meta_subinfo" to="/"
                   ><i data-v-e28aca72="" class="fas fa-comment"></i
@@ -82,6 +84,12 @@
               <!-- p: nornal text, strong: strong, h3: subtitle -->
               {{ blog.content }}
             </div>
+            <div class="action" v-if="blog.author_id == $store.state.user.id">
+              <router-link class="btn btn-warning m-3" to="#" role="button"
+                >Update</router-link
+              >
+              <button class="btn btn-danger m-3" @click="deleteBlog(blog.id)">Delete</button>
+            </div>
             <div class="tag-widget post-tag-container mt-5 mb-5">
               <div class="tagcloud">
                 <router-link to="/" class="tag-cloud-link">Life</router-link>
@@ -90,6 +98,7 @@
                 <router-link to="/" class="tag-cloud-link">Work</router-link>
               </div>
             </div>
+
             <div class="comment-post py-5">
               <h3 class="mb-5">6 comments</h3>
               <ul class="comment-list">
@@ -290,6 +299,19 @@ export default {
     };
   },
   methods: {
+    async deleteBlog(blogId) {
+      let db = firebase.firestore(app);
+      await db.collection("blogs")
+      .where("id", "==", blogId)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach(async (doc) => {
+          doc.ref.delete();
+        });
+        alert("This blog was deleted!!!");
+        this.$router.replace('/personal/' + this.$store.state.user.id);
+      })
+    },
     async getImageUrl(id) {
       // Ref to firebase storage
       const imgRef = firebase.storage().ref();
@@ -332,8 +354,8 @@ export default {
               });
             });
         });
-        console.log("blog")
-        console.log(this.blog)
+        console.log("blog");
+        console.log(this.blog);
         this.getImageUrl(blogId);
       })
       .catch((error) => {
