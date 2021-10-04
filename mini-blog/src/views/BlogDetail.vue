@@ -51,7 +51,7 @@
                 </router-link>
                 <router-link class="meta_subinfo" to="/"
                   ><i data-v-e28aca72="" class="fas fa-user"></i
-                  ><span data-v-e28aca72="">ADMIN</span></router-link
+                  ><span data-v-e28aca72="">{{ blog.author }}</span></router-link
                 >
                 <router-link class="meta_subinfo" to="/"
                   ><i data-v-e28aca72="" class="fas fa-comment"></i
@@ -69,7 +69,7 @@
                   />
                 </div>
                 <div class="position pl-3">
-                  <h4 class="mb-0">Jamie Jonson</h4>
+                  <h4 class="mb-0">{{ blog.author }}</h4>
                   <span>CEO, Product Designer</span>
                 </div>
               </div>
@@ -285,6 +285,7 @@ export default {
         content: null,
         release_date: null,
         title: null,
+        author: null,
       },
     };
   },
@@ -314,13 +315,25 @@ export default {
       .where("id", "==", blogId)
       .get()
       .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
+        querySnapshot.forEach(async (doc) => {
           //  Set cookies
           this.blog = doc.data();
           let date = new Date(doc.data().release_date.seconds * 1000);
           this.blog.release_date =
             date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear();
+
+          await db
+            .collection("users")
+            .where("id", "==", doc.data().author_id)
+            .get()
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                this.blog.author = doc.data().username;
+              });
+            });
         });
+        console.log("blog")
+        console.log(this.blog)
         this.getImageUrl(blogId);
       })
       .catch((error) => {

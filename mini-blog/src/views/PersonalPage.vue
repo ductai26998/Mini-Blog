@@ -166,8 +166,6 @@ export default {
       font-size: 1.5rem;
       font-weight: 700;
     }
-    hr {
-    }
     .manager {
       width: 60vw;
       margin: auto;

@@ -18,9 +18,7 @@
         :key="blog.id"
         @click="$router.push('/blogs/' + blog.id)"
       >
-        <router-link :to="{ path: 'blogs/' + blog.id }">
-          <div :id="blog.id" class="blog-item__img"></div>
-        </router-link>
+        <div :id="blog.id" class="blog-item__img"></div>
         <div class="blog-item__info">
           <p class="blog-item__info-1">
             <a href="#" class="date">
@@ -29,7 +27,7 @@
             </a>
             <a href="#" class="role">
               <i class="fas fa-user"></i>
-              <span>ADMIN</span>
+              <span>{{ blog.author }}</span>
             </a>
             <a href="#" class="nums-comment">
               <i class="fas fa-comment"></i>
@@ -42,7 +40,7 @@
           <div class="blog-item__info__author">
             <div class="author__avatar"></div>
             <div class="position pl-3 author__infor">
-              <h4 class="mb-0">Jamie Jonson</h4>
+              <h4 class="mb-0">{{ blog.author }}</h4>
               <span>CEO, Product Designer</span>
             </div>
           </div>
@@ -77,14 +75,25 @@ export default {
           return;
         }
 
-        snapshot.forEach((doc) => {
+        snapshot.forEach(async (doc) => {
           var date = new Date(doc.data().release_date.seconds * 1000);
+          var author = null;
+          await db
+            .collection("users")
+            .where("id", "==", doc.data().author_id)
+            .get()
+            .then((querySnapshot) => {
+              querySnapshot.forEach((doc) => {
+                author = doc.data().username;
+              });
+            });
           let blogInfo = {
             id: doc.data().id,
             content: doc.data().content,
             release_date:
               date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear(),
             title: doc.data().title,
+            author: author,
           };
           this.getImageUrl(doc.data().id);
           this.blogs.push(blogInfo);
