@@ -165,7 +165,7 @@ export default {
     logout() {
       firebase.auth().signOut();
       this.$cookies.remove("userId");
-      this.$router.replace({ path: "auth/login" });
+      this.$router.replace({ path: "/auth/login" });
     },
     onClose() {
       this.btnControlVisible = false;
